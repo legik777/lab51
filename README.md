@@ -1,5 +1,9 @@
 # Лабораторная работа № 1
 
+| branch | status |
+|--------|--------|
+| neMaster |[![Build Status](https://travis-ci.com/mrmamongo/Lab01-parser-yuna.svg?branch=neMaster)](https://travis-ci.com/github/mrmamongo/lab01-parser-yuna)|
+
 ## Задание
 
 Реализовать утилиту табличного вывода массива данных, хранящихся в файле формата **JSON**.<br />
