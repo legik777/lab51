@@ -135,7 +135,7 @@ Table::ParseFromString(wrong_string);
 } catch (const std::runtime_error& e) {
 const char ref_str[] = R"(incorrect JSON file: count field at meta
       should be equal items field size)";
-EXPECT_EQ(e.what(), ref_str);
+EXPECT_EQ(*e.what(), *ref_str);
 }
 }
 
@@ -155,7 +155,7 @@ Table::ParseFromString(wrong_string);
 } catch (const std::runtime_error& e) {
 const char ref_str[] = R"(incorrect JSON file:
     items field should be an array)";
-EXPECT_EQ(e.what(), ref_str);
+EXPECT_EQ(*e.what(), *ref_str);
 }
 }
 
@@ -164,7 +164,7 @@ try{
 Table::ParseFromFile("incorrect.json");
 } catch (const std::runtime_error& e) {
 const char ref_str[] = "unable to open json: incorrect.json";
-EXPECT_EQ(e.what(), ref_str);
+EXPECT_EQ(*e.what(), *ref_str);
 }
 }
 
@@ -198,7 +198,7 @@ Table::ParseFromFile("wrong_file.json");
 } catch (const std::runtime_error& e) {
 const char ref_str[] = R"(incorrect JSON file: count field at meta
      should be equal items field size)";
-EXPECT_EQ(e.what(), ref_str);
+EXPECT_EQ(*e.what(), *ref_str);
 }
 }
 
@@ -221,7 +221,7 @@ try {
 Table::ParseFromFile("wrong_file.json");
 } catch (const std::runtime_error& e) {
 const char ref_str[] = R"(incorrect JSON file: items field should be an array)";
-EXPECT_EQ(e.what(), ref_str);
+EXPECT_EQ(*e.what(), *ref_str);
 }
 }
 
