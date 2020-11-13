@@ -126,7 +126,7 @@ void Table::Print(std::ostream &os) const {
   os << header.str() << std::endl;
 
   for (const auto& student : impl->GetVector()) {
-    Print(student);
+    Print(student, os);
   }
   Filler(os);
 }
