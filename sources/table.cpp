@@ -2,8 +2,6 @@
 //
 // Created by lamp on 09.11.2020.
 //
-#pragma once
-
 #include "../include/table.h"
 #include <utility>
 
