@@ -2,7 +2,6 @@
 //
 // Created by lamp on 09.11.2020.
 //
-#pragma once
 
 #include <gtest/gtest.h>
 #include "../include/table.h"
@@ -10,7 +9,7 @@
 TEST(Student_Test, EmptyIndex){
 string j_string =\
       R"({"name": "Ivanov Petr", "group": "1", "avg": "4.25", "debt": null})";
-Student emptyStudent((Json::parse(j_string));
+Student emptyStudent((Json::parse(j_string)));
 
 EXPECT_EQ(emptyStudent.imp->GetType(""), Null);
 EXPECT_EQ(std::any_cast<std::nullptr_t>(emptyStudent.imp->GetField("")), \
