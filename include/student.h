@@ -69,6 +69,7 @@ class Student {
   std::unique_ptr<Imp> imp;
 };
 
+// 1. Дружественная функция
 
-
+// friend std::ostream& operator>>(std::ostream& os, const Student& student);
 #endif  // PARSER_STUDENTS_H

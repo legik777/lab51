@@ -42,6 +42,8 @@ class Table {
 
   static Table ParseFromString(const string& jsonString);
 
+  friend std::ostream& operator<<(std::ostream& os,const Table& table) ;
+
   std::unique_ptr<Impl> impl;
 };
 

@@ -71,8 +71,12 @@ GetField(debt)) == std::vector<string> {"C++", "Linux", "Network"}));
 TEST(Table_Test, EmptyStudents){
 Table table(std::vector<Student>{});
 std::stringstream ans;
-table.Print(ans);
-EXPECT_EQ(ans.str(), "");
+ans << table;
+string ref_str = R"(|----|-----|---|----|
+|name|group|avg|debt|
+|----|-----|---|----|
+)";
+EXPECT_EQ(ans.str(), ref_str);
 EXPECT_EQ(table.impl->GetWidth(""), 0);
 }
 TEST(Table_Test, ConvertToString){
@@ -93,7 +97,7 @@ Student Petr(j);
 
 Table table(std::vector<Student>{ Petr, Ivan, Nikita  });
 std::stringstream ss;
-table.Print(ss);
+ss << table;
 
 const char ref_string[] =\
  R"(|-------------|------|----|-------|
@@ -263,7 +267,7 @@ right_file.close();
 
 Table table = Table::ParseFromFile("right_file.json");
 std::stringstream ans;
-table.Print(ans);
+ans << table;
 const char ref_string[] =\
  R"(|-------------|------|----|-------|
 |name         |group |avg |debt   |
@@ -311,7 +315,7 @@ const char right_string[] =
 
 Table table = Table::ParseFromString(right_string);
 std::stringstream ans;
-table.Print(ans);
+ans << table;
 const char ref_string[] =\
  R"(|-------------|------|----|-------|
 |name         |group |avg |debt   |

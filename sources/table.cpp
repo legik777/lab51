@@ -100,7 +100,7 @@ void Table::Filler(size_t size, size_t len, std::ostream &os) {
   }
 }
 
-void Table::Print(std::ostream &os) const {
+/*void Table::Print(std::ostream &os) const {
   if (impl->GetVector().empty()) {
     return;
   }
@@ -129,19 +129,50 @@ void Table::Print(std::ostream &os) const {
     Print(student, os);
   }
   Filler(os);
-}
+}*/
 void Table::Print(const Student& student, std::ostream& os) const{
-  Filler(os);
-  os << "|" << student.ToString(name);
-  Filler(impl->GetWidth(name), student.ToString(name).length(), os);
-  os << "|" << student.ToString(group);
-  Filler(impl->GetWidth(group), student.ToString(group).length(), os);
-  os << "|" << student.ToString(avg);
-  Filler(impl->GetWidth(avg), student.ToString(avg).length(), os);
-  os << "|" << student.ToString(debt);
-  Filler(impl->GetWidth(debt), student.ToString(debt).length(), os);
-  os << "|" << std::endl;
+    Filler(os);
+    os << "|" << student.ToString(name);
+    Filler(impl->GetWidth(name), student.ToString(name).length(), os);
+    os << "|" << student.ToString(group);
+    Filler(impl->GetWidth(group), student.ToString(group).length(), os);
+    os << "|" << student.ToString(avg);
+    Filler(impl->GetWidth(avg), student.ToString(avg).length(), os);
+    os << "|" << student.ToString(debt);
+    Filler(impl->GetWidth(debt), student.ToString(debt).length(), os);
+    os << "|" << std::endl;
 }
+
+std::ostream &operator<<(std::ostream &os, const Table& table){
+    table.Filler(os);
+    std::stringstream header;
+    header << "|" << name;
+    for (size_t i = 0; i < table.impl->GetWidth(name) - name.length(); ++i){
+        header << " ";
+    }
+    header << "|" << group;
+    for (size_t i = 0; i < table.impl->GetWidth(group) - group.length(); ++i){
+        header << " ";
+    }
+    header << "|" << avg;
+    for (size_t i = 0; i < table.impl->GetWidth(avg) - avg.length(); ++i){
+        header << " ";
+    }
+    header << "|" << debt;
+    for (size_t i = 0; i < table.impl->GetWidth(debt) - debt.length(); ++i){
+        header << " ";
+    }
+    header << "|";
+    os << header.str() << std::endl;
+
+    for (const auto& student : table.impl->GetVector()) {
+        table.Print(student, os);
+    }
+    table.Filler(os);
+
+    return os;
+}
+
 auto Table::Impl::GetWidth(const string& index) const -> size_t {
   if ( index == name ){
     return name_w;
