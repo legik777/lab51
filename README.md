@@ -2,7 +2,7 @@
 
 | branch | status |
 |--------|--------|
-| neMaster |[![Build Status](https://travis-ci.com/mrmamongo/Lab01-parser-yuna.svg?branch=neMaster)](https://travis-ci.com/github/mrmamongo/lab01-parser-yuna)|
+|  ver2  |[![Build Status](https://travis-ci.com/mrmamongo/Lab01-parser-yuna.svg?branch=ver2)](https://travis-ci.com/github/mrmamongo/lab01-parser-yuna)|
 
 ## Задание
 
