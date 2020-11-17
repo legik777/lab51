@@ -72,7 +72,7 @@ TEST(Table_Test, EmptyStudents){
 Table table(std::vector<Student>{});
 std::stringstream ans;
 ans << table;
-string ref_str = R"(|----|-----|---|----|
+const char ref_str[] = R"(|----|-----|---|----|
 |name|group|avg|debt|
 |----|-----|---|----|
 )";
