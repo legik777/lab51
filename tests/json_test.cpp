@@ -109,8 +109,8 @@ TEST(Testfunction,  typeCheck3) {
     vector<student> studentst = parseJS(JS);
     student s2;
     s2.name = "Sidorov Ivan";
-    s2.group = (unsigned int)31;
-    s2.avg = (unsigned int)4;
+   // s2.group = (unsigned int)31;
+   // s2.avg = (unsigned int)4;
     s2.debt = new string("C++");
 
     EXPECT_EQ(studentst[0].name,  "Ivanov Petr");
