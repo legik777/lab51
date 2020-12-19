@@ -54,16 +54,11 @@ std::string gettypeavg(std::vector <student> st, int n) {
     if (st[n].avg.type().name() == typeid (std::string).name())
     {
         return std::any_cast <std::string> (st[n].avg);
-    }
-    else if (st[n].avg.type().name() == typeid (unsigned int).name()) {
+    } else if (st[n].avg.type().name() == typeid (unsigned int).name()) {
         return std::to_string(std::any_cast <unsigned int> (st[n].avg));
-
-
-    }
-    else if (st[n].avg.type().name() == typeid (double).name()) {
+    } else if (st[n].avg.type().name() == typeid (double).name()) {
         return std::to_string(std::any_cast <double> (st[n].avg));
-    }
-    else {
+    } else {
         return "null";
     }
 }
@@ -75,8 +70,7 @@ std::string gettypedebt(std::vector <student> st, int n) {
     if (st[n].debt.type().name() == typeid (std::string).name())
     {
         return std::any_cast <std::string> (st[n].debt);
-    }
-    else {
+    } else {
         return  std::to_string(std::any_cast<std::vector<std::string>>(st[n].debt).size()) + " items";
     }
 }
