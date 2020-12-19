@@ -113,7 +113,7 @@ TEST(Testfunction, typeCheck3) {
     s2.name = "Sidorov Ivan";
     //s2.group = (unsigned int)31;
     //s2.avg = (unsigned int)4;
-    s2.debt = new std::string("C++");
+    s2.debt = "C++";
     EXPECT_EQ(students[0].name, "Ivanov Petr");
     EXPECT_EQ(gettypegroup(students, 0), "1");
     EXPECT_EQ(gettypeavg(students, 0), "4.25");
