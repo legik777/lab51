@@ -103,7 +103,8 @@ vector<student> parseJS(json js) {
 
   vector<student> students;
   cout << "|" << setw(18) << left << " name" << "|" << setw(8)
-       << " group" << "|" << setw(8) << " avg" << "|" << setw(18) << " dept" << "|" << endl;
+       << " group" << "|" << setw(8) << " avg"
+    << "|" << setw(18) << " dept" << "|" << endl;
   string stemp = "|------------------|--------|--------|------------------|";
   cout << stemp << endl;
   for (int i = 0; i < length; i++) {
@@ -112,8 +113,11 @@ vector<student> parseJS(json js) {
     students.push_back(p);
   }
   for (int i = 0; i < length; i++) {
-    cout << "|" << setw(18) << left << students[i].name << "|" << setw(8)
-         << gettypegroup(students, i) << "|" << setw(8) << gettypeavg(students, i) << "|" << setw(18) << gettypedebt(students, i) << "|" << endl;
+    cout << "|" << setw(18) << left
+      << students[i].name << "|" << setw(8)
+         << gettypegroup(students, i) << "|" << setw(8)
+      << gettypeavg(students, i) << "|" << setw(18)
+      << gettypedebt(students, i) << "|" << endl;
     cout << stemp << endl;
   }
   return students;
