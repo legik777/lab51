@@ -65,7 +65,7 @@ std::string gettypeavg(std::vector <student> st, int n) {
 }
 
 std::string gettypedebt(std::vector <student> st, int n) {
-    std::any test2= NULL;
+    std::any test2 = NULL;
     if (st[n].debt.type().name() == test2.type().name()) {
         return "null";
     }
