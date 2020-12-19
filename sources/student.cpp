@@ -51,13 +51,13 @@ std::string gettypegroup(std::vector <student> st, int n) {
 }
 
 std::string gettypeavg(std::vector <student> st, int n) {
+    std::any test1=4.6;
     if (st[n].avg.type().name() == typeid (std::string).name())
     {
         return std::any_cast <std::string> (st[n].avg);
     } else if (st[n].avg.type().name() == typeid(unsigned int).name()) {
         return std::to_string(std::any_cast <unsigned int> (st[n].avg));
-    } else if (st[n].avg.type().name() ==
-               typeid(static_cast<double>(6.4)).name()) {
+    } else if (st[n].avg.type().name() == test1.type().name()) {
         return std::to_string(std::any_cast <double> (st[n].avg));
     } else {
         return "null";
