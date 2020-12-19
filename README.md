@@ -1,6 +1,6 @@
 # Лабораторная работа № 1
 
-
+[![Build Status](https://travis-ci.com/legik777/temp5.svg?branch=master)](https://travis-ci.com/legik777/temp5)
 
 ## Задание
 
