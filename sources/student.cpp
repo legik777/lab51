@@ -86,10 +86,9 @@ std::vector<student> parseJS(nlohmann::json js) {
 
     if (length != checkLength) {
         std::cout << "_meta: count != items.count" << std::endl;
-        throw new std::runtime_error("meta: count != items.count");
+        throw new std::runtime_error
+            ("meta: count != items.count");
     }
-
-
     std::vector<student> students;
     std::cout << "|" << std::setw(18)
         << std::left << " name" << "|" << std::setw(8)
@@ -109,7 +108,8 @@ std::vector<student> parseJS(nlohmann::json js) {
         std::cout << "|" << std::setw(18) << std::left
             << students[i].name << "|" << std::setw(8)
             << gettypegroup(students, i) << "|" << std::setw(8)
-            << gettypeavg(students, i) << "|" << std::setw(18) << gettypedebt(students, i) << "|" << std::endl;
+            << gettypeavg(students, i) << "|" << std::setw(18)
+            << gettypedebt(students, i) << "|" << std::endl;
         std::cout << stemp << std::endl;
     }
     return students;
