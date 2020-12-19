@@ -42,11 +42,8 @@ TEST(Testfunction,  typeCheck1) {
     from_Json((jst2[0]),  s1);
     students.push_back(s1);
     EXPECT_EQ(s1.name,  "Sidorov Ivan");
-   // cout << s1.group.type().name() << endl;
-   // cout << s1.avg.type().name() <<endl;
-   // cout << s1.debt.type().name() <<endl;
-    EXPECT_EQ(any_cast<s1.group.type()>(s1.group),  31);
-    EXPECT_EQ(any_cast<s1.avg.type()>(s1.avg),  4);
+    EXPECT_EQ(any_cast<unsigned int>(s1.group),  31);
+    EXPECT_EQ(any_cast<unsigned int>(s1.avg),  4);
     EXPECT_EQ(any_cast<string>(s1.debt),  "C++");
     EXPECT_TRUE(true); }
 nlohmann::json jst3 = {
