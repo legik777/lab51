@@ -5,13 +5,12 @@
 
 #include <gtest/gtest.h>
 #include "../include/student.h"
-    
 nlohmann::json jst1 = {
     {
     {"name", "Ivanov Petr"},
     {"group", "1"},
     {"avg","4.25"},
-    {"debt",nlohmann::detail::value_t::null},
+    {"debt", nlohmann::detail::value_t::null},
     }
 };
 
@@ -115,34 +114,25 @@ TEST(Testfunction, typeCheck3) {
     std::stringstream stream(sss);
     stream >> JS;
     std::vector<student> students = parseJS(JS);
-
     student s2;
     s2.name = "Sidorov Ivan";
     //s2.group = (unsigned int)31;
     //s2.avg = (unsigned int)4;
     s2.debt = new std::string("C++");
-
     EXPECT_EQ(students[0].name, "Ivanov Petr");
     EXPECT_EQ(gettypegroup(students,0), "1");
     EXPECT_EQ(gettypeavg(students, 0), "4.25");
     EXPECT_EQ(gettypedebt(students, 0), "null");
-
     EXPECT_EQ(students[1].name, s2.name);
     //EXPECT_EQ(std::any_cast<unsigned int>(students[1].group), std::any_cast<unsigned int>(s2.group));
     //EXPECT_EQ(std::any_cast<unsigned int>(students[1].avg), std::any_cast<unsigned int>(s2.avg));
     EXPECT_EQ(std::any_cast<std::string>(students[1].debt), "C++");
-
     EXPECT_EQ(students[2].name, "Pertov Nikita");
     EXPECT_EQ(std::any_cast<std::string>(students[2].group), "IU8-31");
     EXPECT_EQ(std::any_cast<double>(students[2].avg), 3.33);
     EXPECT_EQ(gettypedebt(students,2), "3 items");
-
     EXPECT_TRUE(true);
-
 }
-
-
-
 TEST(Testfunction, MetaLength) {
     std::string metaString = R"({
   "items": [
