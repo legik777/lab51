@@ -30,10 +30,10 @@ TEST(Testfunction,  fromjson) {
 
 nlohmann::json jst2 = {
     {
-    {"name",  "Sidorov Ivan"}, 
-    {"group",  31}, 
-    {"avg",  4}, 
-    {"debt",  "C++"}, 
+    {"name", "Sidorov Ivan"},
+    {"group",  31},
+    {"avg",  4},
+    {"debt",  "C++"},
     }
 };
 
@@ -48,10 +48,10 @@ TEST(Testfunction,  typeCheck1) {
     EXPECT_TRUE(true); }
 nlohmann::json jst3 = {
     {
-    {"name",  "Pertov Nikita"}, 
-    {"group",  "IU8-31"}, 
-    {"avg",  3.33}, 
-    {"debt",  {"C++", "Linux", "Network"}}, 
+    {"name",  "Pertov Nikita"},
+    {"group",  "IU8-31"},
+    {"avg",  3.33},
+    {"debt",  {"C++", "Linux", "Network"}},
     }
 };
 
@@ -64,9 +64,6 @@ TEST(Testfunction,  typeCheck2) {
     student s1;
     from_Json((jst3[0]),  s1);
     students.push_back(s1);
-    
-
-
     EXPECT_EQ(s1.name,  "Pertov Nikita");
     EXPECT_EQ(any_cast<string>(s1.group),  "IU8-31");
     EXPECT_EQ(any_cast<double>(s1.avg),  3.33);
@@ -77,9 +74,9 @@ TEST(Testfunction,  typeCheck2) {
 string sss = R"({
   "items": [
     {
-      "name": "Ivanov Petr", 
-      "group": "1", 
-      "avg": "4.25", 
+      "name": "Ivanov Petr",
+      "group": "1",
+      "avg": "4.25",
       "debt": null
     }, 
     {
@@ -110,7 +107,6 @@ TEST(Testfunction,  typeCheck3) {
     stringstream stream(sss);
     stream >> JS;
     vector<student> studentstt = parseJS(JS);
-
     student s2;
     s2.name = "Sidorov Ivan";
     s2.group = (unsigned int)31;
