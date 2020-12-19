@@ -45,7 +45,7 @@ TEST(Testfunction,  typeCheck1) {
    // cout << s1.group.type().name() << endl;
    // cout << s1.avg.type().name() <<endl;
    // cout << s1.debt.type().name() <<endl;
-    EXPECT_EQ(any_cast<int>(s1.group),  31);
+    EXPECT_EQ(any_cast<s1.group.type()>(s1.group),  31);
     EXPECT_EQ(any_cast<int>(s1.avg),  4);
     EXPECT_EQ(any_cast<string>(s1.debt),  "C++");
     EXPECT_TRUE(true); }
