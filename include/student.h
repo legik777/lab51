@@ -122,7 +122,7 @@ vector<student> parseJS(json js) {
 
 	if (length != checkLength) {
 		cout << "_meta: count != items.count" << endl;
-		throw new runtime_error("meta: count != items.count");
+		//throw new runtime_error("meta: count != items.count");
 	}
 
 	vector<student> students;
