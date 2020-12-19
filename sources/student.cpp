@@ -89,8 +89,8 @@ std::vector<student> parseJS(nlohmann::json js) {
 
     if (length != checkLength) {
         std::cout << "_meta: count != items.count" << std::endl;
-        throw new std::runtime_error
-            ("meta: count != items.count");
+       // throw new std::runtime_error
+         //   ("meta: count != items.count");
     }
     std::vector<student> students;
     std::cout << "|" << std::setw(18)
