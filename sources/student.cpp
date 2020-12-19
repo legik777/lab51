@@ -35,22 +35,17 @@ auto getDebt(const nlohmann::json& j) ->std::any {
 }
 
 void from_Json(const nlohmann::json& j, student& s) {
-
     s.name = get_name(j.at("name"));
     s.group = get_group(j.at("group"));
     s.avg = get_avg(j.at("avg"));
     s.debt = getDebt(j.at("debt"));
 }
 std::string gettypegroup(std::vector <student> st, int n) {
-    if (st[n].group.type().name() == typeid (std::string).name())
-    {
+    if (st[n].group.type().name() == typeid (std::string).name()) {
         return std::any_cast <std::string> (st[n].group);
-
-    }
-    else if (st[n].group.type().name() == typeid (unsigned int).name()) {
+    } else if (st[n].group.type().name() == typeid (unsigned int).name()) {
         return std::to_string(std::any_cast <unsigned int> (st[n].group));
-    }
-    else {
+    } else {
         return "null";
     }
 }
