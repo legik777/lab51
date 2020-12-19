@@ -56,7 +56,8 @@ std::string gettypeavg(std::vector <student> st, int n) {
         return std::any_cast <std::string> (st[n].avg);
     } else if (st[n].avg.type().name() == typeid(unsigned int).name()) {
         return std::to_string(std::any_cast <unsigned int> (st[n].avg));
-    } else if (st[n].avg.type().name() == typeid(static_cast<double>6.4).name()) {
+    } else if (st[n].avg.type().name() ==
+               typeid(static_cast<double>(6.4)).name()) {
         return std::to_string(std::any_cast <double> (st[n].avg));
     } else {
         return "null";
