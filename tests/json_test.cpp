@@ -23,8 +23,8 @@ TEST(Testfunction,  fromjson) {
     students.push_back(s1);
     EXPECT_EQ(s1.name,  "Ivanov Petr");
     EXPECT_EQ(gettypegroup(students,  0),  "1");
-    EXPECT_EQ(gettypeavg(students,  0), "4.25");
-    EXPECT_EQ(gettypedebt(students,  0), "null"); 
+    EXPECT_EQ(gettypeavg(students, 0), "4.25");
+    EXPECT_EQ(gettypedebt(students, 0), "null");
     EXPECT_TRUE(true);
 }
 
@@ -71,7 +71,10 @@ TEST(Testfunction,  typeCheck2) {
     EXPECT_TRUE(true);
 }
 
-string sss = R"({
+
+
+TEST(Testfunction,  typeCheck3) {
+    string sss = R"({
   "items": [
     {
       "name": "Ivanov Petr",
@@ -100,9 +103,6 @@ string sss = R"({
     "count": 3
   }
 })";
-
-TEST(Testfunction,  typeCheck3) {
-    
     json JS;
     stringstream stream(sss);
     stream >> JS;
@@ -132,7 +132,10 @@ TEST(Testfunction,  typeCheck3) {
 
 }
 
-string metaString = R"({
+
+
+TEST(Testfunction,  MetaLength) {
+    string metaString = R"({
   "items": [
     {
       "name": "Ivanov Petr", 
@@ -161,8 +164,6 @@ string metaString = R"({
     "count": 5
   }
 })";
-
-TEST(Testfunction,  MetaLength) {
     json JS;
     stringstream stream(metaString);
     stream >> JS;
