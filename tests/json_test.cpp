@@ -119,9 +119,9 @@ TEST(Testfunction,  typeCheck3) {
     EXPECT_EQ(gettypedebt(studentstt,  0),  "null");
 
     EXPECT_EQ(studentst[1].name,  s2.name);
-    EXPECT_EQ(any_cast<unsigned int>(studentst[1].group), 
+    EXPECT_EQ(any_cast<unsigned int>(studentst[1].group),
               any_cast<unsigned int>(s2.group));
-    EXPECT_EQ(any_cast<unsigned int>(studentst[1].avg), 
+    EXPECT_EQ(any_cast<unsigned int>(studentst[1].avg),
               any_cast<unsigned int>(s2.avg));
     EXPECT_EQ(any_cast<string>(studentst[1].debt),  "C++");
 
