@@ -6,7 +6,6 @@
 auto get_name(const nlohmann::json& j) -> std::string {
     return j.get<std::string>();
 }
-    
 auto get_group(const nlohmann::json& j) -> std::any {
     if (j.is_string())
         return j.get<std::string>();
@@ -31,7 +30,7 @@ auto getDebt(const nlohmann::json& j) ->std::any {
     else if (j.is_string())
         return j.get<std::string>();
     else {
-        return j.get<std::vector<std::string> >();
+        return j.get<std::vector<std::string>>();
     }
 }
 
