@@ -51,7 +51,7 @@ std::string gettypegroup(std::vector <student> st, int n) {
 }
 
 std::string gettypeavg(std::vector <student> st, int n) {
-    std::any test1=4.6;
+    std::any test1 = 4.6;
     if (st[n].avg.type().name() == typeid (std::string).name())
     {
         return std::any_cast <std::string> (st[n].avg);
