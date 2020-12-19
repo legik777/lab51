@@ -2,126 +2,124 @@
 
 #include "../include/student.h"
 
-using namespace std;
-using namespace nlohmann;
 
-auto get_name(const json& j) -> std::string {
-  return j.get<string>();
+auto get_name(const nlohmann::json& j) -> std::string {
+	return j.get<std::string>();
 }
 
-auto get_group(const json& j) -> std::any {
-  if (j.is_string())
-    return j.get<string>();
-  else
-    return j.get<size_t>();
+auto get_group(const nlohmann::json& j) -> std::any {
+	if (j.is_string())
+		return j.get<std::string>();
+	else
+		return j.get<size_t>();
 }
 
-auto get_avg(const json& j) -> any {
-  if (j.is_null())
-    return nullptr;
-  else if (j.is_string())
-    return j.get<string>();
-  else if (j.is_number_float())
-    return j.get<double>();
-  else
-    return j.get<size_t>();
+auto get_avg(const nlohmann::json& j) -> std::any {
+	if (j.is_null())
+		return nullptr;
+	else if (j.is_string())
+		return j.get<std::string>();
+	else if (j.is_number_float())
+		return j.get<double>();
+	else
+		return j.get<size_t>();
 }
 
-auto getDebt(const json& j) ->any {
-  if (j.is_null())
-    return nullptr;
-  else if (j.is_string())
-    return j.get<string>();
-  else {
-    return j.get<vector<string> >();
-  }
+auto getDebt(const nlohmann::json& j) ->std::any {
+	if (j.is_null())
+		return nullptr;
+	else if (j.is_string())
+		return j.get<std::string>();
+	else {
+		return j.get<std::vector<std::string> >();
+	}
 }
 
-void from_Json(const json& j, student& s) {
+void from_Json(const nlohmann::json& j, student& s) {
 
-  s.name = get_name(j.at("name"));
-  s.group = get_group(j.at("group"));
-  s.avg = get_avg(j.at("avg"));
-  s.debt = getDebt(j.at("debt"));
+	s.name = get_name(j.at("name"));
+	s.group = get_group(j.at("group"));
+	s.avg = get_avg(j.at("avg"));
+	s.debt = getDebt(j.at("debt"));
 }
-string gettypegroup(vector <student> st, int n) {
-  if (st[n].group.type().name() == typeid (string).name())
-  {
-    return any_cast <string> (st[n].group);
+std::string gettypegroup(std::vector <student> st, int n) {
+	if (st[n].group.type().name() == typeid (std::string).name())
+	{
+		return std::any_cast <std::string> (st[n].group);
 
-  }
-  else if (st[n].group.type().name() == typeid (unsigned int).name()) {
-    return to_string(any_cast <unsigned int> (st[n].group));
-  }
-  else {
-    return "null";
-  }
-}
-
-string gettypeavg(vector <student> st, int n) {
-  if (st[n].avg.type().name() == typeid (string).name())
-  {
-    return any_cast <string> (st[n].avg);
-  }
-  else if (st[n].avg.type().name() == typeid (unsigned int).name()) {
-    return to_string(any_cast <unsigned int> (st[n].avg));
-
-
-  }
-  else if (st[n].avg.type().name() == typeid (double).name()) {
-    return to_string(any_cast <double> (st[n].avg));
-  }
-  else {
-    return "null";
-  }
+	}
+	else if (st[n].group.type().name() == typeid (unsigned int).name()) {
+		return std::to_string(std::any_cast <unsigned int> (st[n].group));
+	}
+	else {
+		return "null";
+	}
 }
 
-string gettypedebt(vector <student> st, int n) {
-  if (st[n].debt.type().name() == typeid (nullptr_t).name()) {
-    return "null";
-  }
-  if (st[n].debt.type().name() == typeid (string).name())
-  {
-    return any_cast <string> (st[n].debt);
-  }
-  else {
-    return  to_string(any_cast<vector<string>>(st[n].debt).size()) + " items";
-  }
+std::string gettypeavg(std::vector <student> st, int n) {
+	if (st[n].avg.type().name() == typeid (std::string).name())
+	{
+		return std::any_cast <std::string> (st[n].avg);
+	}
+	else if (st[n].avg.type().name() == typeid (unsigned int).name()) {
+		return std::to_string(std::any_cast <unsigned int> (st[n].avg));
+
+
+	}
+	else if (st[n].avg.type().name() == typeid (double).name()) {
+		return std::to_string(std::any_cast <double> (st[n].avg));
+	}
+	else {
+		return "null";
+	}
 }
 
-vector<student> parseJS(json js) {
-  int length = js["_meta"]["count"];
-
-  int checkLength = 0;
-  for (json::iterator i = js["items"].begin(); i != js["items"].end(); i++) {
-    checkLength++;
-  }
-
-  if (length != checkLength) {
-    cout << "_meta: count != items.count" << endl;
-  }
-
-  vector<student> students;
-  cout << "|" << setw(18) << left << " name" << "|" << setw(8)
-       << " group" << "|" << setw(8) << " avg"
-    << "|" << setw(18) << " dept" << "|" << endl;
-  string stemp = "|------------------|--------|--------|------------------|";
-  cout << stemp << endl;
-  for (int i = 0; i < length; i++) {
-    student p;
-    from_Json((js["items"][i]), p);
-    students.push_back(p);
-  }
-  for (int i = 0; i < length; i++) {
-    cout << "|" << setw(18) << left
-      << students[i].name << "|" << setw(8)
-         << gettypegroup(students, i) << "|" << setw(8)
-      << gettypeavg(students, i) << "|" << setw(18)
-      << gettypedebt(students, i) << "|" << endl;
-    cout << stemp << endl;
-  }
-  return students;
+std::string gettypedebt(std::vector <student> st, int n) {
+	if (st[n].debt.type().name() == typeid (nullptr_t).name()) {
+		return "null";
+	}
+	if (st[n].debt.type().name() == typeid (std::string).name())
+	{
+		return std::any_cast <std::string> (st[n].debt);
+	}
+	else {
+		return  std::to_string(std::any_cast<std::vector<std::string>>(st[n].debt).size()) + " items";
+	}
 }
 
+std::vector<student> parseJS(nlohmann::json js) {
+	int length = js["_meta"]["count"];
 
+	int checkLength = 0;
+	for (nlohmann::json::iterator i = js["items"].begin(); i != js["items"].end(); i++) {
+		checkLength++;
+	}
+
+	if (length != checkLength) {
+		std::cout << "_meta: count != items.count" << std::endl;
+		throw new std::runtime_error("meta: count != items.count");
+	}
+
+
+	std::vector<student> students;
+
+	std::cout << "|" << std::setw(18) << std::left << " name" << "|" << std::setw(8)
+		<< " group" << "|" << std::setw(8) << " avg" << "|" << std::setw(18) << " dept" << "|" << std::endl;
+	std::string stemp = "|------------------|--------|--------|------------------|";
+	std::cout << stemp << std::endl;
+	for (int i = 0; i < length; i++) {
+		student p;
+
+		from_Json((js["items"][i]), p);
+		students.push_back(p);
+	}
+
+
+	for (int i = 0; i < length; i++) {
+		std::cout << "|" << std::setw(18) << std::left << students[i].name << "|" << std::setw(8)
+			<< gettypegroup(students, i) << "|" << std::setw(8) << gettypeavg(students, i) << "|" << std::setw(18) << gettypedebt(students, i) << "|" << std::endl;
+		std::cout << stemp << std::endl;
+	}
+	return students;
+}
 

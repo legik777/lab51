@@ -14,23 +14,20 @@
 #include <fstream>
 #include "nlohmann/json.hpp"
 
-using namespace std;
-using namespace nlohmann;
-
 struct student {
-	string name;
-	any group;
-	any avg;
-	any debt;
+std::string name;
+std::any group;
+std::any avg;
+std::any debt;
 };
-auto get_name(const json& j) -> std::string;
-auto get_group(const json& j) -> std::any;
-auto get_avg(const json& j) -> any;
-auto getDebt(const json& j) ->any;
-void from_Json(const json& j, student& s);
-string gettypegroup(vector <student> st, int n);
-string gettypeavg(vector <student> st, int n);
-string gettypedebt(vector <student> st, int n);
-vector<student> parseJS(json js);
+auto get_name(const nlohmann::json& j)->std::string;
+auto get_group(const nlohmann::json& j)->std::any;
+auto get_avg(const nlohmann::json& j)->std::any;
+auto getDebt(const nlohmann::json& j)->std::any;
+void from_Json(const nlohmann::json& j, student& s);
+std::string gettypegroup(std::vector <student> st, int n);
+std::string gettypeavg(std::vector <student> st, int n);
+std::string gettypedebt(std::vector <student> st, int n);
+std::vector<student> parseJS(nlohmann::json js);
 
 #endif  
