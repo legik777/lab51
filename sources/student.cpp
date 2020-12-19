@@ -65,17 +65,17 @@ std::string gettypeavg(std::vector <student> st, int n) {
 }
 
 std::string gettypedebt(std::vector <student> st, int n) {
-    std::any test2 = NULL;
-    if (st[n].debt.type().name() == test2.type().name()) {
-        return "null";
-    }
-    if (st[n].debt.type().name() == typeid (std::string).name())
-    {
-        return std::any_cast <std::string> (st[n].debt);
-    } else {
-        return  std::to_string(std::any_cast<std::vector
-                               <std::string>>(st[n].debt).size()) + " items";
-    }
+std::vector<std::string> test2 = { "r", "t", "y" };
+std::any test3 = test2;
+if (st[n].debt.type().name() == test3.type().name()) {
+return  std::to_string(std::any_cast<std::vector<std::string>>(st[n].debt).size()) + " items";
+}
+if (st[n].debt.type().name() == typeid (std::string).name())
+{
+return std::any_cast <std::string> (st[n].debt);
+} else {
+return "null";
+}
 }
 
 std::vector<student> parseJS(nlohmann::json js) {
