@@ -14,9 +14,10 @@ nlohmann::json jst1 = {
     {"debt",nlohmann::detail::value_t::null},
     }
 };
-std::vector<student> students;
+
 
 TEST(Testfunction, fromjson) {
+    std::vector<student> students;
     student s1;
     
     from_Json((jst1[0]), s1);
