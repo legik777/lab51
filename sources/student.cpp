@@ -2,9 +2,6 @@
 
 #include "../include/student.h"
 
-using namespace std;
-using namespace nlohmann;
-
 auto get_name(const json& j) -> std::string {
   return j.get<string>();
 }
