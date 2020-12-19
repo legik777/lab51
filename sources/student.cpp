@@ -41,9 +41,9 @@ void from_Json(const nlohmann::json& j, student& s) {
     s.debt = getDebt(j.at("debt"));
 }
 std::string gettypegroup(std::vector <student> st, int n) {
-    if (st[n].group.type().name() == typeid (std::string).name()) {
+    if (st[n].group.type().name() == typeid(std::string).name()) {
         return std::any_cast <std::string> (st[n].group);
-    } else if (st[n].group.type().name() == typeid (unsigned int).name()) {
+    } else if (st[n].group.type().name() == typeid(unsigned int).name()) {
         return std::to_string(std::any_cast <unsigned int> (st[n].group));
     } else {
         return "null";
@@ -54,9 +54,9 @@ std::string gettypeavg(std::vector <student> st, int n) {
     if (st[n].avg.type().name() == typeid (std::string).name())
     {
         return std::any_cast <std::string> (st[n].avg);
-    } else if (st[n].avg.type().name() == typeid (unsigned int).name()) {
+    } else if (st[n].avg.type().name() == typeid(unsigned int).name()) {
         return std::to_string(std::any_cast <unsigned int> (st[n].avg));
-    } else if (st[n].avg.type().name() == typeid (double).name()) {
+    } else if (st[n].avg.type().name() == typeid(double).name()) {
         return std::to_string(std::any_cast <double> (st[n].avg));
     } else {
         return "null";
