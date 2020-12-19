@@ -1,6 +1,6 @@
 // Copyright 2020 Andreytorix
 
-#include "student.h"
+#include "../include/student.h"
 
 using namespace std;
 using namespace nlohmann;
