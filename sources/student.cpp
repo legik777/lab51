@@ -25,13 +25,15 @@ auto get_avg(const nlohmann::json& j) -> std::any {
 }
 
 auto getDebt(const nlohmann::json& j) ->std::any {
-    if (j.is_null())
+    if (j.is_null()) {
         return nullptr;
-    else if (j.is_string())
+    }
+    else if (j.is_string()) {
         return j.get<std::string>();
-    else 
+    }
+    else {
         return j.get<std::vector<std::string>>();
-    
+    }
 }
 
 void from_Json(const nlohmann::json& j, student& s) {
