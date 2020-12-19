@@ -112,7 +112,7 @@ TEST(Testfunction,  typeCheck3) {
     json JS;
     stringstream stream(sss);
     stream >> JS;
-    vector<student> students = parseJS(JS);
+    vector<student> studentstt = parseJS(JS);
 
     student s2;
     s2.name = "Sidorov Ivan";
@@ -120,20 +120,20 @@ TEST(Testfunction,  typeCheck3) {
     s2.avg = (unsigned int)4;
     s2.debt = new string("C++");
 
-    EXPECT_EQ(students[0].name,  "Ivanov Petr");
-    EXPECT_EQ(gettypegroup(students, 0),  "1");
-    EXPECT_EQ(gettypeavg(students,  0),  "4.25");
-    EXPECT_EQ(gettypedebt(students,  0),  "null");
+    EXPECT_EQ(studentstt[0].name,  "Ivanov Petr");
+    EXPECT_EQ(gettypegroup(studentstt, 0),  "1");
+    EXPECT_EQ(gettypeavg(studentstt,  0),  "4.25");
+    EXPECT_EQ(gettypedebt(studentstt,  0),  "null");
 
-    EXPECT_EQ(students[1].name,  s2.name);
-    EXPECT_EQ(any_cast<unsigned int>(students[1].group),  any_cast<unsigned int>(s2.group));
-    EXPECT_EQ(any_cast<unsigned int>(students[1].avg),  any_cast<unsigned int>(s2.avg));
-    EXPECT_EQ(any_cast<string>(students[1].debt),  "C++");
+    EXPECT_EQ(studentst[1].name,  s2.name);
+    EXPECT_EQ(any_cast<unsigned int>(studentst[1].group),  any_cast<unsigned int>(s2.group));
+    EXPECT_EQ(any_cast<unsigned int>(studentst[1].avg),  any_cast<unsigned int>(s2.avg));
+    EXPECT_EQ(any_cast<string>(studentst[1].debt),  "C++");
 
-    EXPECT_EQ(students[2].name,  "Pertov Nikita");
-    EXPECT_EQ(any_cast<string>(students[2].group),  "IU8-31");
-    EXPECT_EQ(any_cast<double>(students[2].avg),  3.33);
-    EXPECT_EQ(gettypedebt(students, 2),  "3 items");
+    EXPECT_EQ(studentst[2].name,  "Pertov Nikita");
+    EXPECT_EQ(any_cast<string>(studentst[2].group),  "IU8-31");
+    EXPECT_EQ(any_cast<double>(studentst[2].avg),  3.33);
+    EXPECT_EQ(gettypedebt(studentst, 2),  "3 items");
 
     EXPECT_TRUE(true);
 
