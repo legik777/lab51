@@ -39,6 +39,7 @@ nlohmann::json jst2 = {
 };
 
 TEST(Testfunction, typeCheck1) {
+    std::vector<student> students;
     student s1;
     from_Json((jst2[0]), s1);
     students.push_back(s1);
@@ -59,6 +60,7 @@ nlohmann::json jst3 = {
 };
 
 TEST(Testfunction, typeCheck2) {
+    std::vector<student> students;
     std::vector<std::string>test2;
     test2.push_back("C++");
     test2.push_back("Linux");
