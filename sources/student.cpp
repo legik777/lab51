@@ -94,7 +94,8 @@ std::vector<student> parseJS(nlohmann::json js) {
         << std::left << " name" << "|" << std::setw(8)
         << " group" << "|" << std::setw(8)
         << " avg" << "|" << std::setw(18) << " dept" << "|" << std::endl;
-    std::string stemp = "|------------------|--------|--------|------------------|";
+    std::string stemp =
+    "|------------------|--------|--------|------------------|";
     std::cout << stemp << std::endl;
     for (int i = 0; i < length; i++) {
         student p;
