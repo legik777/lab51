@@ -68,7 +68,8 @@ std::string gettypedebt(std::vector <student> st, int n) {
 std::vector<std::string> test2 = { "r", "t", "y" };
 std::any test3 = test2;
 if (st[n].debt.type().name() == test3.type().name()) {
-return  std::to_string(std::any_cast<std::vector<std::string>>(st[n].debt).size()) + " items";
+return  std::to_string
+(std::any_cast<std::vector<std::string>>(st[n].debt).size()) + " items";
 }
 if (st[n].debt.type().name() == typeid (std::string).name())
 {
