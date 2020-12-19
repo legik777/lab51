@@ -9,17 +9,16 @@
 
 nlohmann::json jst1 = {
     {
-    {"name",  "Ivanov Petr"}, 
-    {"group",  "1"}, 
-    {"avg",  "4.25"}, 
-    {"debt", nlohmann::detail::value_t::null}, 
+    {"name",  "Ivanov Petr"},
+    {"group",  "1"},
+    {"avg",  "4.25"},
+    {"debt", nlohmann::detail::value_t::null},
     }
 };
 vector<student> students;
 
 TEST(Testfunction,  fromjson) {
     student s1;
-    
     from_Json((jst1[0]),  s1);
     students.push_back(s1);
     EXPECT_EQ(s1.name,  "Ivanov Petr");
