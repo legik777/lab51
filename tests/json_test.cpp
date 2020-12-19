@@ -4,7 +4,7 @@
 //
 
 #include <gtest/gtest.h>
-#include "../include/table.h"
+#include "../include/student.h"
 
 
 nlohmann::json jst1 = {
