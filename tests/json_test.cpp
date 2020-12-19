@@ -6,284 +6,78 @@
 #include <gtest/gtest.h>
 #include "../include/table.h"
 
-TEST(Student_Test, EmptyIndex){
-const char j_string[] =\
-      R"({"name": "Ivanov Petr", "group": "1", "avg": "4.25", "debt": null})";
-Student emptyStudent((Json::parse(j_string)));
 
-EXPECT_EQ(emptyStudent.imp->GetType(""), Null);
-EXPECT_EQ(std::any_cast<std::nullptr_t>(emptyStudent.imp->GetField("")), \
-      nullptr);
-}
+nlohmann::json jst1 = {
+	{
+	{"name", "Ivanov Petr"},
+	{"group", "1"},
+	{"avg","4.25"},
+	{"debt",nlohmann::detail::value_t::null},
+	}
+};
+vector<student> students;
 
-TEST(Student_Test, ParseFromString){
-const char j_string[] =\
-      R"({"name": "Ivanov Petr", "group": "1", "avg": "4.25", "debt": null})";
-Json j = Json::parse(j_string);
-Student Petr(j);
-EXPECT_TRUE(Petr.imp->GetType(name) == String);
-EXPECT_TRUE(Petr.imp->GetType(group) ==  String);
-EXPECT_TRUE(Petr.imp->GetType(avg) == String);
-EXPECT_TRUE(Petr.imp->GetType(debt) == Null);
-EXPECT_TRUE(std::any_cast<string>(Petr.imp->\
-                                      GetField(name)) == "Ivanov Petr");
-EXPECT_TRUE(std::any_cast<string>(Petr.imp->\
-                                      GetField(group)) == "1");
-EXPECT_TRUE(std::any_cast<string>(Petr.imp->\
-                                      GetField(avg)) == "4.25");
-EXPECT_TRUE(std::any_cast<std::nullptr_t>(Petr.imp->\
-                                         GetField(debt)) == nullptr);
-
-const char j_string1[] =\
-R"({"name": "Sidorov Ivan", "group": 31, "avg": 4, "debt": "C++"})";
-j = Json::parse(j_string1);
-Student Ivan(j);
-EXPECT_TRUE(Ivan.imp->GetType(name) == String);
-EXPECT_TRUE(Ivan.imp->GetType(group) == Integer);
-EXPECT_TRUE(Ivan.imp->GetType(avg) == Integer);
-EXPECT_TRUE(Ivan.imp->GetType(debt) == String);
-EXPECT_TRUE(std::any_cast<string>(Ivan.imp->\
-                                      GetField(name)) == "Sidorov Ivan");
-EXPECT_TRUE(std::any_cast<int>(Ivan.imp->\
-                                      GetField(group)) == 31);
-EXPECT_TRUE(std::any_cast<int>(Ivan.imp->\
-                                      GetField(avg)) == 4);
-EXPECT_TRUE(std::any_cast<string>(Ivan.imp->\
-                                 GetField(debt)) == "C++");
-const char j_string2[] =\
-R"({"name": "Petrov Nikita", "group": "IU8-31", "avg": 3.33, "debt": ["C++", "Linux", "Network"]})";
-j = Json::parse(j_string2);
-Student Nikita(j);
-EXPECT_TRUE(Nikita.imp->GetType(name) == String);
-EXPECT_TRUE(Nikita.imp->GetType(group) == String);
-EXPECT_TRUE(Nikita.imp->GetType(avg) ==  Double);
-EXPECT_TRUE(Nikita.imp->GetType(debt) ==  Vector);
-EXPECT_TRUE(std::any_cast<string>(Nikita.imp->\
-                                GetField(name)) == "Petrov Nikita");
-EXPECT_TRUE(std::any_cast<string>(Nikita.imp->\
-                                      GetField(group)) == "IU8-31");
-EXPECT_TRUE(std::any_cast<double>(Nikita.imp->\
-                                      GetField(avg)) == 3.33);
-EXPECT_TRUE((std::any_cast<std::vector<string>>(Nikita.imp->\
-GetField(debt)) == std::vector<string> {"C++", "Linux", "Network"}));
+TEST(Testfunction, fromjson) {
+	student s1;
+	
+	from_Json((jst1[0]), s1);
+	students.push_back(s1);
+	EXPECT_EQ(s1.name, "Ivanov Petr");
+	EXPECT_EQ(gettypegroup(students, 0), "1");
+	EXPECT_EQ(gettypeavg(students, 0), "4.25");
+	EXPECT_EQ(gettypedebt(students, 0), "null"); 
+	EXPECT_TRUE(true);
 }
 
-TEST(Table_Test, EmptyStudents){
-Table table(std::vector<Student>{});
-std::stringstream ans;
-ans << table;
-const char ref_str[] = R"(|----|-----|---|----|
-|name|group|avg|debt|
-|----|-----|---|----|
-)";
-EXPECT_EQ(ans.str(), ref_str);
-EXPECT_EQ(table.impl->GetWidth(""), 0);
-}
-TEST(Table_Test, ConvertToString){
-const char j_string[] =\
-R"({"name": "Petrov Nikita", "group": "IU8-31", "avg": 3.33, "debt": ["C++", "Linux", "Network"]})";
-Json j = Json::parse(j_string);
-Student Nikita(j);
+nlohmann::json jst2 = {
+	{
+	{"name", "Sidorov Ivan"},
+	{"group", 31},
+	{"avg", 4},
+	{"debt", "C++"},
+	}
+};
 
-const char j_string1[] =\
-R"({"name": "Sidorov Ivan", "group": 31, "avg": 4, "debt": "C++"})";
-j = Json::parse(j_string1);
-Student Ivan(j);
-
-const char j_string2[] =\
-      R"({"name": "Ivanov Petr", "group": "1", "avg": "4.25", "debt": null})";
-j = Json::parse(j_string2);
-Student Petr(j);
-
-Table table(std::vector<Student>{ Petr, Ivan, Nikita  });
-std::stringstream ss;
-ss << table;
-
-const char ref_string[] =\
- R"(|-------------|------|----|-------|
-|name         |group |avg |debt   |
-|-------------|------|----|-------|
-|Ivanov Petr  |1     |4.25|null   |
-|-------------|------|----|-------|
-|Sidorov Ivan |31    |4   |C++    |
-|-------------|------|----|-------|
-|Petrov Nikita|IU8-31|3.33|3 items|
-|-------------|------|----|-------|
-)";
-EXPECT_EQ(ref_string, ss.str());
+TEST(Testfunction, typeCheck1) {
+	student s1;
+	from_Json((jst2[0]), s1);
+	students.push_back(s1);
+	EXPECT_EQ(s1.name, "Sidorov Ivan");
+	EXPECT_EQ(any_cast<unsigned int>(s1.group), 31);
+	EXPECT_EQ(any_cast<unsigned int>(s1.avg), 4);
+	EXPECT_EQ(any_cast<string>(s1.debt), "C++");
+	EXPECT_TRUE(true);
 }
 
-TEST(Table_Test, IncorrectString_ItemsWrongCount) {
-const char wrong_string[] =
-    R"({
-"items": [
-{
-"name": "Ivanov Petr",
-"group": "1",
-"avg": "4.25",
-"debt": null
-},
-{
-"name": "Petrov Nikita",
-"group": "IU8-31",
-"avg": "3.33",
-"debt": ["C++", "Linux", "Network"]
-}
-],
-"_meta": {
-"count": 3
-}
-})";
-try {
-Table::ParseFromString(wrong_string);
-} catch (const std::runtime_error& e) {
-const char ref_str[] = R"(incorrect JSON file: count field at meta
-      should be equal items field size)";
-EXPECT_EQ(*e.what(), *ref_str);
-}
+nlohmann::json jst3 = {
+	{
+	{"name", "Pertov Nikita"},
+	{"group", "IU8-31"},
+	{"avg", 3.33},
+	{"debt", {"C++","Linux","Network"}},
+	}
+};
+
+TEST(Testfunction, typeCheck2) {
+	vector<string>test2;
+	test2.push_back("C++");
+	test2.push_back("Linux");
+	test2.push_back("Network");
+
+	student s1;
+	from_Json((jst3[0]), s1);
+	students.push_back(s1);
+	
+
+
+	EXPECT_EQ(s1.name, "Pertov Nikita");
+	EXPECT_EQ(any_cast<string>(s1.group), "IU8-31");
+	EXPECT_EQ(any_cast<double>(s1.avg), 3.33);
+	EXPECT_EQ(any_cast<vector<string>>(s1.debt), test2);
+	EXPECT_TRUE(true);
 }
 
-TEST(Table_Test, IncorrectString_ItemsNotArray) {
-const char wrong_string[] =
-    R"(
-{
-"items": {
-"name": "Ivanov Petr",
-"group": "1",
-"avg": "4.25",
-"debt": null
-}
-})";
-try {
-Table::ParseFromString(wrong_string);
-} catch (const std::runtime_error& e) {
-const char ref_str[] = R"(incorrect JSON file:
-    items field should be an array)";
-EXPECT_EQ(*e.what(), *ref_str);
-}
-}
-
-TEST(Table_Test, IncorrctFile_FileNotFound){
-try{
-Table::ParseFromFile("incorrect.json");
-} catch (const std::runtime_error& e) {
-const char ref_str[] = "unable to open json: incorrect.json";
-EXPECT_EQ(*e.what(), *ref_str);
-}
-}
-
-TEST(Table_Test, IncorrctFile_ItemsWrongCount) {
-const char wrong_string[] =
-    R"({
-"items": [
-{
-"name": "Ivanov Petr",
-"group": "1",
-"avg": "4.25",
-"debt": null
-},
-{
-"name": "Petrov Nikita",
-"group": "IU8-31",
-"avg": "3.33",
-"debt": ["C++", "Linux", "Network"]
-}
-],
-"_meta": {
-"count": 3
-}
-})";
-std::ofstream wrong_file;
-wrong_file.open("wrong_file.json", std::ios::out);
-wrong_file << wrong_string;
-wrong_file.close();
-try {
-Table::ParseFromFile("wrong_file.json");
-} catch (const std::runtime_error& e) {
-const char ref_str[] = R"(incorrect JSON file: count field at meta
-     should be equal items field size)";
-EXPECT_EQ(*e.what(), *ref_str);
-}
-}
-
-TEST(Table_Test, IncorrectFile_ItemsNotArray) {
-const char wrong_string[] =
-    R"(
-{
-"items": {
-"name": "Ivanov Petr",
-"group": "1",
-"avg": "4.25",
-"debt": null
-}
-})";
-std::ofstream wrong_file;
-wrong_file.open("wrong_file.json", std::ios::out);
-wrong_file << wrong_string;
-wrong_file.close();
-try {
-Table::ParseFromFile("wrong_file.json");
-} catch (const std::runtime_error& e) {
-const char ref_str[] = R"(incorrect JSON file: items field should be an array)";
-EXPECT_EQ(*e.what(), *ref_str);
-}
-}
-
-TEST(FULL_CYCLE_TEST, FromFile){
-const char right_string[] =
-    R"({
-  "items": [
-    {
-      "name": "Ivanov Petr",
-      "group": "1",
-      "avg": "4.25",
-      "debt": null
-    },
-    {
-      "name": "Sidorov Ivan",
-      "group": 31,
-      "avg": 4,
-      "debt": "C++"
-    },
-    {
-      "name": "Pertov Nikita",
-      "group": "IU8-31",
-      "avg": 3.33,
-      "debt": [
-        "C++",
-        "Linux",
-        "Network"
-      ]
-    }
-  ],
-  "_meta": {
-    "count": 3
-  }
-})";
-std::ofstream right_file;
-right_file.open("right_file.json", std::ios::out);
-right_file << right_string;
-right_file.close();
-
-Table table = Table::ParseFromFile("right_file.json");
-std::stringstream ans;
-ans << table;
-const char ref_string[] =\
- R"(|-------------|------|----|-------|
-|name         |group |avg |debt   |
-|-------------|------|----|-------|
-|Ivanov Petr  |1     |4.25|null   |
-|-------------|------|----|-------|
-|Sidorov Ivan |31    |4   |C++    |
-|-------------|------|----|-------|
-|Pertov Nikita|IU8-31|3.33|3 items|
-|-------------|------|----|-------|
-)";
-EXPECT_EQ(ans.str(), ref_string);
-}
-TEST(FULL_CYCLE_TEST, FromString){
-const char right_string[] =
-    R"({
+string sss = R"({
   "items": [
     {
       "name": "Ivanov Petr",
@@ -313,23 +107,71 @@ const char right_string[] =
   }
 })";
 
-Table table = Table::ParseFromString(right_string);
-std::stringstream ans;
-ans << table;
-const char ref_string[] =\
- R"(|-------------|------|----|-------|
-|name         |group |avg |debt   |
-|-------------|------|----|-------|
-|Ivanov Petr  |1     |4.25|null   |
-|-------------|------|----|-------|
-|Sidorov Ivan |31    |4   |C++    |
-|-------------|------|----|-------|
-|Pertov Nikita|IU8-31|3.33|3 items|
-|-------------|------|----|-------|
-)";
-EXPECT_EQ(ans.str(), ref_string);
+TEST(Testfunction, typeCheck3) {
+	
+	json JS;
+	stringstream stream(sss);
+	stream >> JS;
+	vector<student> students = parseJS(JS);
+
+	student s2;
+	s2.name = "Sidorov Ivan";
+	s2.group = (unsigned int)31;
+	s2.avg = (unsigned int)4;
+	s2.debt = new string("C++");
+
+	EXPECT_EQ(students[0].name, "Ivanov Petr");
+	EXPECT_EQ(gettypegroup(students,0), "1");
+	EXPECT_EQ(gettypeavg(students, 0), "4.25");
+	EXPECT_EQ(gettypedebt(students, 0), "null");
+
+	EXPECT_EQ(students[1].name, s2.name);
+	EXPECT_EQ(any_cast<unsigned int>(students[1].group), any_cast<unsigned int>(s2.group));
+	EXPECT_EQ(any_cast<unsigned int>(students[1].avg), any_cast<unsigned int>(s2.avg));
+	EXPECT_EQ(any_cast<string>(students[1].debt), "C++");
+
+	EXPECT_EQ(students[2].name, "Pertov Nikita");
+	EXPECT_EQ(any_cast<string>(students[2].group), "IU8-31");
+	EXPECT_EQ(any_cast<double>(students[2].avg), 3.33);
+	EXPECT_EQ(gettypedebt(students,2), "3 items");
+
+	EXPECT_TRUE(true);
+
 }
-int main(int argc, char** argv){
-  testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
+
+string metaString = R"({
+  "items": [
+    {
+      "name": "Ivanov Petr",
+      "group": "1",
+      "avg": "4.25",
+      "debt": null
+    },
+    {
+      "name": "Sidorov Ivan",
+      "group": 31,
+      "avg": 4,
+      "debt": "C++"
+    },
+    {
+      "name": "Pertov Nikita",
+      "group": "IU8-31",
+      "avg": 3.33,
+      "debt": [
+        "C++",
+        "Linux",
+        "Network"
+      ]
+    }
+  ],
+  "_meta": {
+    "count": 5
+  }
+})";
+
+TEST(Testfunction, MetaLength) {
+	json JS;
+	stringstream stream(metaString);
+	stream >> JS;
+	EXPECT_ANY_THROW(parseJS(JS));
 }
