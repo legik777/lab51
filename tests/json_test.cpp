@@ -119,17 +119,17 @@ TEST(Testfunction,  typeCheck3) {
     EXPECT_EQ(gettypedebt(studentstt,  0),  "null");
 
     EXPECT_EQ(studentst[1].name,  s2.name);
-    EXPECT_EQ(any_cast<unsigned int>(studentst[1].group),  any_cast<unsigned int>(s2.group));
-    EXPECT_EQ(any_cast<unsigned int>(studentst[1].avg),  any_cast<unsigned int>(s2.avg));
+    EXPECT_EQ(any_cast<unsigned int>(studentst[1].group), 
+              any_cast<unsigned int>(s2.group));
+    EXPECT_EQ(any_cast<unsigned int>(studentst[1].avg), 
+              any_cast<unsigned int>(s2.avg));
     EXPECT_EQ(any_cast<string>(studentst[1].debt),  "C++");
 
     EXPECT_EQ(studentst[2].name,  "Pertov Nikita");
     EXPECT_EQ(any_cast<string>(studentst[2].group),  "IU8-31");
     EXPECT_EQ(any_cast<double>(studentst[2].avg),  3.33);
     EXPECT_EQ(gettypedebt(studentst, 2),  "3 items");
-
     EXPECT_TRUE(true);
-
 }
 
 
@@ -169,4 +169,3 @@ TEST(Testfunction,  MetaLength) {
     stream >> JS;
     EXPECT_ANY_THROW(parseJS(JS));
 }
-    
