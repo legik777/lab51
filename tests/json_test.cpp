@@ -23,8 +23,8 @@ TEST(Testfunction,  fromjson) {
     students.push_back(s1);
     EXPECT_EQ(s1.name,  "Ivanov Petr");
     EXPECT_EQ(gettypegroup(students,  0),  "1");
-    EXPECT_EQ(gettypeavg(students,  0),  "4.25");
-    EXPECT_EQ(gettypedebt(students,  0),  "null"); 
+    EXPECT_EQ(gettypeavg(students,  0), "4.25");
+    EXPECT_EQ(gettypedebt(students,  0), "null"); 
     EXPECT_TRUE(true);
 }
 
