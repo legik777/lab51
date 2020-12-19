@@ -106,17 +106,17 @@ TEST(Testfunction,  typeCheck3) {
     json JS;
     stringstream stream(sss);
     stream >> JS;
-    vector<student> studentstt = parseJS(JS);
+    vector<student> studentst = parseJS(JS);
     student s2;
     s2.name = "Sidorov Ivan";
     s2.group = (unsigned int)31;
     s2.avg = (unsigned int)4;
     s2.debt = new string("C++");
 
-    EXPECT_EQ(studentstt[0].name,  "Ivanov Petr");
-    EXPECT_EQ(gettypegroup(studentstt, 0),  "1");
-    EXPECT_EQ(gettypeavg(studentstt,  0),  "4.25");
-    EXPECT_EQ(gettypedebt(studentstt,  0),  "null");
+    EXPECT_EQ(studentst[0].name,  "Ivanov Petr");
+    EXPECT_EQ(gettypegroup(studentst, 0),  "1");
+    EXPECT_EQ(gettypeavg(studentst,  0),  "4.25");
+    EXPECT_EQ(gettypedebt(studentst,  0),  "null");
 
     EXPECT_EQ(studentst[1].name,  s2.name);
     EXPECT_EQ(any_cast<unsigned int>(studentst[1].group),
