@@ -19,7 +19,7 @@ TEST(file, searchtest) {
 }
 TEST(file, searchtest2) {
     Broker::clearVector();
-    bool test = true;
+    bool test2 = true;
     std::vector<std::string> vect = {
 "broker:bcs account:00122223 files:46 lastdate:20181016",
 "broker:bcs account:00123456 files:44 lastdate:20181014",
@@ -44,7 +44,7 @@ TEST(file, searchtest2) {
                 break;
         }
         }
-        EXPECT_EQ(test, 1);
+        EXPECT_EQ(test2, 1);
     } else {
         std::cout << "dir not exist" << std::endl;
     }
