@@ -27,12 +27,13 @@ public:
     }
     std::string toString() {
         return("broker:"+ this -> catalog + " account:" + this -> id +
-               " files:" + std::to_string (this ->counter) + " lastdate:" + std::to_string (this -> date));
+               " files:" + std::to_string(this ->counter) +
+               " lastdate:" + std::to_string(this -> date));
     }
    static void clearVector() {
         brokerVector.clear();
     }
-    
+
 private:
     static void checkBroker(std::vector<std::string> inputBroker) {
         bool exists = false;
