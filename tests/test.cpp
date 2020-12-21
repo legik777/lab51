@@ -38,15 +38,15 @@ TEST(file, searchtest2) {
         int lvec = vect.size();
         for (int i = 0; i < lvec; i++) {
             if (vect[i] != vec[i].toString()) {
-                std::cout  << std::endl
-                    << vec[i].toString() << std::endl << std::endl;
+                //std::cout  << std::endl
+                    //<< vec[i].toString() << std::endl << std::endl;
                 test2 = false;
                 //break; << vect[i]
         }
         }
         EXPECT_EQ(test2, 1);
     } else {
-        std::cout << "dir not exist" << std::endl;
+        //std::cout << "dir not exist" << std::endl;
     }
     EXPECT_TRUE(true);
 }
