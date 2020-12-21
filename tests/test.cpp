@@ -7,6 +7,7 @@ TEST(file, searchtest) {
     std::string path_to_ftp = "../";
     std::vector<std::string> vec;
     vec = recdir(path_to_ftp);
+    std::cout << "number of files found " + vec.back() << std::endl;
     if (boost::filesystem::exists(path_to_ftp)) {
         std::cout << path_to_ftp << std::endl;
         EXPECT_EQ(422,  std::stoi(vec.back()));
