@@ -56,7 +56,7 @@ target_link_libraries(tests GTest::gtest_main parser)
 target_link_libraries(boostf Boost::filesystem)
 #target_link_libraries(testf Boost::filesystem)
 
-file(COPY misc DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+#file(COPY misc DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 enable_testing()
 add_test(NAME unit_tests COMMAND tests)
