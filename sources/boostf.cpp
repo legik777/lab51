@@ -7,7 +7,7 @@ std::vector<std::string> recdir(std::string path_to_ftp) {
     std::string dir;
     std::vector<std::string> ret;
     int countv = 0;
-    for (boost::filesystem::recursive_directory_iterator 
+    for (boost::filesystem::recursive_directory_iterator
          it(path_to_ftp); it != end; ++it) { //перебор файлов и каталогов
         boost::filesystem::file_status
             fs = boost::filesystem::status(*it); //информация о файле
