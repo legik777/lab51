@@ -51,7 +51,7 @@ target_include_directories(tests
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 # TODO: change template word to project name and delete this comment
-target_link_libraries(tests GTest::gtest_main parser)
+target_link_libraries(tests GTest::gtest_main boostf)
 
 target_link_libraries(boostf Boost::filesystem)
 #target_link_libraries(testf Boost::filesystem)
@@ -74,7 +74,7 @@ if(BUILD_COVERAGE)
   list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
   find_package(codecov)
   # TODO: change template word to project name and delete this comment
-  enable_project_coverage(parser)
+  enable_project_coverage(boostf)
   enable_project_coverage(tests)
   list(APPEND LCOV_REMOVE_PATTERNS "'${PROJECT_SOURCE_DIR}/tests/*'")
   coverage_evaluate()
