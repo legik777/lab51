@@ -17,7 +17,7 @@ TEST(file, searchtest) {
     }
   EXPECT_TRUE(true);
 }
-TEST(file, searchtest2) {
+TEST(file, validityDetectedFinancialFiles) {
     Broker::clearVector();
     bool test2 = true;
     std::vector<std::string> vect = {
