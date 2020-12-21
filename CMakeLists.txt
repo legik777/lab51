@@ -61,7 +61,7 @@ target_link_libraries(boostf Boost::filesystem)
 enable_testing()
 add_test(NAME unit_tests COMMAND tests)
 
-file(COPY misc DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+#file(COPY misc DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 if(BUILD_COVERAGE)
   function(ENABLE_PROJECT_COVERAGE PROJECT)
