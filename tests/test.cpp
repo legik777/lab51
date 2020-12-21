@@ -1,7 +1,7 @@
 // Copyright 2020 Your Name <your_email>
 
 #include <gtest/gtest.h>
-#include "../sources/boostf.cpp"
+#include <boostf.hpp>
 	std::vector<Broker> Broker::brokerVector;
 TEST(file, searchtest) {
 	std::string path_to_ftp = "../";
