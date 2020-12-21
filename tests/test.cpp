@@ -41,7 +41,7 @@ TEST(file, searchtest2) {
                 std::cout << vect[i] << std::endl
                     << vec[i].toString() << std::endl << std::endl;
                 test2 = false;
-                break;
+                //break;
         }
         }
         EXPECT_EQ(test2, 1);
