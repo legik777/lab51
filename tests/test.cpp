@@ -11,16 +11,15 @@ TEST(file, searchtest) {
         std::cout << path_to_ftp << std::endl;
         EXPECT_EQ(422,  std::stoi(vec.back()));
         vec.pop_back();
-    }
-    else {
+    } else {
         std::cout << "dir not exist" << std::endl;
     }
   EXPECT_TRUE(true);
 }
 TEST(file, searchtest2) {
     Broker::clearVector();
-    bool test=true;
-    std::vector<std::string> vect = { 
+    bool test = true;
+    std::vector<std::string> vect = {
 "broker:bcs account:00122223 files:46 lastdate:20181016",
 "broker:bcs account:00123456 files:44 lastdate:20181014",
 "broker:bcs account:00123458 files:48 lastdate:20181018",
@@ -38,14 +37,14 @@ TEST(file, searchtest2) {
         int lvec = vect.size();
         for (int i = 0; i < lvec; i++) {
             if (vect[i] != vec[i].toString()) {
-                std::cout << vect[i] << std::endl << vec[i].toString() << std::endl << std::endl;
+                std::cout << vect[i] << std::endl
+                    << vec[i].toString() << std::endl << std::endl;
                 test = false;
                 break;
         }
         }
         EXPECT_EQ(test, 1);
-    }
-    else {
+    } else {
         std::cout << "dir not exist" << std::endl;
     }
     EXPECT_TRUE(true);
