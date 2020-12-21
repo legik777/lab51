@@ -40,7 +40,7 @@ TEST(file, searchtest2) {
             if (vect[i] != vec[i].toString()) {
                 std::cout << vect[i] << std::endl
                     << vec[i].toString() << std::endl << std::endl;
-                test = false;
+                test2 = false;
                 break;
         }
         }
