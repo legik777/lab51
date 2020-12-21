@@ -21,13 +21,13 @@ TEST(file, searchtest2) {
     Broker::clearVector();
     bool test2 = true;
     std::vector<std::string> vect = {
-"broker:bcs account:00122223 files:46 lastdate:20181016",
-"broker:bcs account:00123456 files:44 lastdate:20181014",
+"broker:ib account:00100001 files:48 lastdate:20181018", 
+"broker:ib account:00100002 files:48 lastdate:20181018",
+"broker:ib account:00100003 files:47 lastdate:20181017",          
+"broker:bcs account:00122223 files:46 lastdate:20181016",      
+"broker:bcs account:00123456 files:44 lastdate:20181014",       
 "broker:bcs account:00123458 files:48 lastdate:20181018",
 "broker:bcs account:00143456 files:46 lastdate:20181016",
-"broker:ib account:00100001 files:48 lastdate:20181018",
-"broker:ib account:00100002 files:48 lastdate:20181018",
-"broker:ib account:00100003 files:47 lastdate:20181017",
 "broker:otkritie account:03934520 files:48 lastdate:20181018",
 "broker:otkritie account:03934523 files:47 lastdate:20181017"};
     std::string path_to_ftp = "../";
@@ -38,10 +38,10 @@ TEST(file, searchtest2) {
         int lvec = vect.size();
         for (int i = 0; i < lvec; i++) {
             if (vect[i] != vec[i].toString()) {
-                std::cout << vect[i] << std::endl
+                std::cout  << std::endl
                     << vec[i].toString() << std::endl << std::endl;
                 test2 = false;
-                //break;
+                //break; << vect[i]
         }
         }
         EXPECT_EQ(test2, 1);
