@@ -38,8 +38,8 @@ TEST(file, validityDetectedFinancialFiles) {
         int lvec = vect.size();
         for (int i = 0; i < lvec; i++) {
             if (vect[i] != vec[i].toString()) {
-                //std::cout  << std::endl
-                    //<< vec[i].toString() << std::endl << std::endl;
+                std::cout  << std::endl
+                    << vec[i].toString() << std::endl << std::endl;
                 test2 = false;
                 //break; << vect[i]
         }
