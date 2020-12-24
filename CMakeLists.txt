@@ -41,6 +41,10 @@ add_executable(tests
   # TODO: enum your files and delete this comment
   ${CMAKE_CURRENT_SOURCE_DIR}/tests/test.cpp
 )
+add_executable(main
+  # TODO: enum your files and delete this comment
+ ${CMAKE_CURRENT_SOURCE_DIR}/sources/main.cpp
+)
 
 # TODO: change template word to project name and delete this comment
 target_include_directories(boostf
@@ -50,10 +54,14 @@ target_include_directories(boostf
 target_include_directories(tests
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
+target_include_directories(main
+  PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
 # TODO: change template word to project name and delete this comment
 target_link_libraries(tests GTest::gtest_main boostf)
 
 target_link_libraries(boostf Boost::filesystem)
+target_link_libraries(main Boost::filesystem)
 #target_link_libraries(testf Boost::filesystem)
 
 #file(COPY misc DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
