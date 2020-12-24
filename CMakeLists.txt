@@ -64,6 +64,7 @@ target_include_directories(main
 target_link_libraries(tests GTest::gtest_main boostf)
 
 target_link_libraries(boostf Boost::filesystem)
+target_link_libraries(main Boost::filesystem)
 #target_link_libraries(testf Boost::filesystem)
 
 #file(COPY misc DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
