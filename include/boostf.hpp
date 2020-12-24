@@ -58,6 +58,6 @@ private:
         }
     }
 };
-std::vector<std::string> recdir(std::string);
 void show_vector(std::vector<std::string> vec);
 void show_broker(std::vector<Broker> vec);
+std::vector<std::string> recdir(std::string path_to_ftp);
