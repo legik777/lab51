@@ -61,7 +61,7 @@ target_include_directories(main
 )
 
 # TODO: change template word to project name and delete this comment
-target_link_libraries(tests GTest::gtest_main boostf)
+#target_link_libraries(tests GTest::gtest_main boostf)
 
 target_link_libraries(boostf Boost::filesystem)
 target_link_libraries(main Boost::filesystem)
