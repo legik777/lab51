@@ -6,17 +6,14 @@
 TEST(file, searchtest) {
     std::string path_to_ftp = "../";
     std::vector<std::string> vec;
-    
-    
     if (boost::filesystem::exists(path_to_ftp)) {
-        std::cout << path_to_ftp << std::endl;   
+        std::cout << path_to_ftp << std::endl;  
         vec = recdir(path_to_ftp);
         std::cout << "number of files found " + vec.back() << std::endl;
-        
         EXPECT_EQ(422,  std::stoi(vec.back()));
         vec.pop_back();
         show_vector(vec);
-		show_broker(Broker::ListBrokersv());
+        show_broker(Broker::ListBrokersv());
     } else {
         std::cout << "dir not exist" << std::endl;
     }
