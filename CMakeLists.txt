@@ -37,40 +37,29 @@ add_library(boostf STATIC
   # enum your files and delete this comment
   ${CMAKE_CURRENT_SOURCE_DIR}/sources/boostf.cpp
 )
-# add_executable(tests
+add_executable(tests
   # TODO: enum your files and delete this comment
-#  ${CMAKE_CURRENT_SOURCE_DIR}/tests/test.cpp
-# )
-
-add_executable(main
-  # TODO: enum your files and delete this comment
-  ${CMAKE_CURRENT_SOURCE_DIR}/sources/main.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/tests/test.cpp
 )
-
 
 # TODO: change template word to project name and delete this comment
 target_include_directories(boostf
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
-# target_include_directories(tests
-#  PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
-# )
-target_include_directories(main
+target_include_directories(tests
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
-
 # TODO: change template word to project name and delete this comment
-#target_link_libraries(tests GTest::gtest_main boostf)
+target_link_libraries(tests GTest::gtest_main boostf)
 
 target_link_libraries(boostf Boost::filesystem)
-target_link_libraries(main Boost::filesystem)
 #target_link_libraries(testf Boost::filesystem)
 
 #file(COPY misc DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 enable_testing()
-#add_test(NAME unit_tests COMMAND tests)
+add_test(NAME unit_tests COMMAND tests)
 
 #file(COPY misc DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
@@ -86,7 +75,7 @@ if(BUILD_COVERAGE)
   find_package(codecov)
   # TODO: change template word to project name and delete this comment
   enable_project_coverage(boostf)
-#enable_project_coverage(tests)
+  enable_project_coverage(tests)
   list(APPEND LCOV_REMOVE_PATTERNS "'${PROJECT_SOURCE_DIR}/tests/*'")
   coverage_evaluate()
 endif()
