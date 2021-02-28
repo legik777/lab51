@@ -1,5 +1,6 @@
 // Copyright 2020 Andreytorix
 #pragma once
+#include <utility>
 template <typename T>
 class Stack_2
 {
@@ -15,7 +16,7 @@ public:
     Stack_2() {
         nodeHead = NULL;
         length = 0;
-    };
+    }
     void push(T&& value) {
         Node* nd = new Node;
         nd->obj = std::move(value);
