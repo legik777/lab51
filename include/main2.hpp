@@ -35,13 +35,10 @@ public:
         return length;
     }
     T pop() {
-        if (length > 0) {
             T tmp = std::move(nodeHead->obj);
             nodeHead = std::move(nodeHead->next);
             length--;
             return tmp;
-        } else {
-        return ();
         }
     }
     const T& head() const {
