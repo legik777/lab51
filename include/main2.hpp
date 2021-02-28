@@ -1,3 +1,4 @@
+// Copyright 2020 Andreytorix
 #pragma once
 template <typename T>
 class Stack_2
