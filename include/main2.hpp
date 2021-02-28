@@ -38,11 +38,10 @@ public:
             T tmp = std::move(nodeHead->obj);
             nodeHead = std::move(nodeHead->next);
             length--;
-            return tmp;
-        }
+            return tmp; 
     }
-   /*const T& head(){
+   const T& head(){
        T& ref = nodeHead->obj;
         return ref;
-    }*/
+    }
 };
