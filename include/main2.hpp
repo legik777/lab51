@@ -41,8 +41,8 @@ public:
             return tmp;
         }
     }
-    T& head() {
-        T& ref = nodeHead->obj;
+   const T& head(){
+       const T& ref = nodeHead->obj;
         return ref;
     }
 };
