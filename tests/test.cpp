@@ -1,6 +1,5 @@
 // Copyright 2020 Andreytorix
 #include <gtest/gtest.h>
-#include "pch.h"
 #include "../include/main.hpp"
 #include "../include/main2.hpp"
 
