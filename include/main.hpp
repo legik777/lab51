@@ -1,4 +1,5 @@
 // Copyright 2020 Andreytorix
+#include <utility>
 template <typename T>
 class Stack
 {
@@ -8,7 +9,7 @@ private:
         Node* next; //указатель на следующий элемент списка
         T obj; //хранит данные
     };
-public:   
+public:
     Node* nodeHead;
     size_t length;
     Stack() {
