@@ -7,7 +7,7 @@ class MyClass {
     std::string name;
     int value;
 public:
-   explisit MyClass(int value_ = 0, std::string name_ = "EMPTY")
+   explicit MyClass(int value_ = 0, std::string name_ = "EMPTY")
         : name(std::move(name_)), value(value_) {}
 
     std::string GetName() const { return name; }
