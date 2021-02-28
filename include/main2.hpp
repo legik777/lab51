@@ -27,7 +27,7 @@ public:
     template <typename ... Args> //{4,8,3,6,9,4,43,3,6,}
     void push_emplace(Args&&...  value) {
         T arr[] = { std::move(value)...};
-        for (int i = 0; i < sizeof...(value); ++i) {
+        for (size_t i = 0; i < sizeof...(value); ++i) {
             push(std::move(arr[i]));
         }
     }
