@@ -40,9 +40,8 @@ public:
             nodeHead = std::move(nodeHead->next);
             length--;
             return tmp;
-        }
-        else {
-        return ();   
+        } else {
+        return ();
         }
     }
     const T& head() const {
