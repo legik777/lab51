@@ -1,70 +1,85 @@
 // Copyright 2020 Your Name <your_email>
-
 #include <gtest/gtest.h>
-#include <boostf.hpp>
-    std::vector<Broker> Broker::brokerVector;
-TEST(file, searchtest) {
-    std::string path_to_ftp = "../";
-    std::vector<std::string> vec;
-    if (boost::filesystem::exists(path_to_ftp)) {
-        std::cout << path_to_ftp << std::endl;
-        vec = recdir(path_to_ftp);
-        std::cout << "number of files found " + vec.back() << std::endl;
-        EXPECT_EQ(422,  std::stoi(vec.back()));
-        vec.pop_back();
-        show_vector(vec);
-        show_broker(Broker::ListBrokersv());
-    } else {
-        std::cout << "dir not exist" << std::endl;
-    }
-  EXPECT_TRUE(true);
+#include "pch.h"
+#include "../include/main.hpp"
+#include "../include/main2.hpp"
+
+class MyClass {
+    std::string name;
+    int value;
+public:
+    MyClass(int value_ = 0, std::string name_ = "EMPTY")
+        : name(std::move(name_)), value(value_) {}
+
+    std::string GetName() const { return name; }
+    int GetValue() const { return value; }
+};
+
+TEST(class_Stack, Test1) {
+    Stack<int> obj1;
+    int x1 = 1;
+    int x2 = 2;
+    int x3 = 3;
+    obj1.push(x1);
+    obj1.push(x2);
+    obj1.push(x3);
+    EXPECT_EQ(obj1.head(), 3);
+    obj1.pop();
+    EXPECT_EQ(obj1.head(), 2);
+    obj1.pop();
+    EXPECT_EQ(obj1.head(), 1);
 }
 
+TEST(class_Stack, Test2) {
+    Stack<MyClass> obj1;
+    MyClass x1;
+    MyClass x2(10,"lala");
+    MyClass x3(11,"hihi");
+    obj1.push(x1);
+    obj1.push(x2);
+    obj1.push(x3);
 
-/*
-TEST(file, validityDetectedFinancialFiles) {
-    Broker::clearVector();
-    bool test2 = true;
-    
-    std::vector<std::string> vect = {
-"broker:ib account:00100001 files:48 lastdate:20181018",
-"broker:ib account:00100002 files:48 lastdate:20181018",
-"broker:ib account:00100003 files:47 lastdate:20181017",
-"broker:bcs account:00122223 files:46 lastdate:20181016",
-"broker:bcs account:00143456 files:46 lastdate:20181016",
-"broker:bcs account:00123456 files:44 lastdate:20181014",
-"broker:bcs account:00123458 files:48 lastdate:20181018",
-"broker:otkritie account:03934523 files:47 lastdate:20181017",
-"broker:otkritie account:03934520 files:48 lastdate:20181018"};
-
-    std::vector<std::string> vect = {
-"broker:otkritie account:03934520 files:48 lastdate:20181018",
-"broker:otkritie account:03934523 files:47 lastdate:20181017",
-"broker:bcs account:00123456 files:44 lastdate:20181014",
-"broker:bcs account:00143456 files:46 lastdate:20181016",
-"broker:bcs account:00122223 files:46 lastdate:20181016",
-"broker:bcs account:00123458 files:48 lastdate:20181018",
-"broker:ib account:00100003 files:47 lastdate:20181017",
-"broker:ib account:00100002 files:48 lastdate:20181018",
-"broker:ib account:00100001 files:48 lastdate:20181018"};
-    std::string path_to_ftp = "../";
-    if (boost::filesystem::exists(path_to_ftp)) {
-        std::cout << path_to_ftp << std::endl;
-        recdir(path_to_ftp);
-        std::vector<Broker> vec = Broker::ListBrokersv();
-        int lvec = vect.size();
-        for (int i = 0; i < lvec; i++) {
-            if (vect[i] != vec[i].toString()) {
-                std::cout  << std::endl
-                    << vec[i].toString() << std::endl << std::endl;
-                test2 = false;
-                //break; << vect[i]
-        }
-        }
-        EXPECT_EQ(test2, 1);
-    } else {
-        //std::cout << "dir not exist" << std::endl;
-    }
-    EXPECT_TRUE(true);
+    EXPECT_EQ(obj1.Length(), 3);
+    EXPECT_EQ(obj1.head().GetName(), "hihi");
+    EXPECT_EQ(obj1.head().GetValue(), 11);
+    obj1.pop();
+    EXPECT_EQ(obj1.Length(), 2);
+    EXPECT_EQ(obj1.head().GetName(), "lala");
+    EXPECT_EQ(obj1.head().GetValue(), 10);
+    obj1.pop();
+    EXPECT_EQ(obj1.Length(), 1);
+    EXPECT_EQ(obj1.head().GetName(), "EMPTY");
+    EXPECT_EQ(obj1.head().GetValue(), 0); 
 }
-*/
+
+TEST(class_Stack_2, Test1) {
+    Stack_2<int> sp;
+    sp.push_emplace(5, 8, 2, 5, 8);
+    EXPECT_EQ(sp.pop(), 8);
+    EXPECT_EQ(sp.pop(), 5);
+    EXPECT_EQ(sp.pop(), 2);
+    EXPECT_EQ(sp.pop(), 8);
+    EXPECT_EQ(sp.pop(), 5);
+}
+
+TEST(class_Stack_2, Test2) {
+    Stack_2<MyClass> obj2;
+    MyClass x1;
+    MyClass x2(10, "lala");
+    MyClass x3(11, "hihi");
+    obj2.push_emplace(x1, x2, x3);
+    EXPECT_EQ(obj2.Length(), 3);
+    MyClass ptr = std::move(obj2.pop());
+    EXPECT_EQ(obj2.Length(), 2);
+    EXPECT_EQ(ptr.GetName(), "hihi");
+    EXPECT_EQ(ptr.GetValue(), 11);
+    ptr = std::move(obj2.pop());
+    EXPECT_EQ(obj2.Length(), 1);
+    EXPECT_EQ(ptr.GetName(), "lala");
+    EXPECT_EQ(ptr.GetValue(), 10);
+    ptr = std::move(obj2.pop());
+    EXPECT_EQ(obj2.Length(), 0);
+    EXPECT_EQ(ptr.GetName(), "EMPTY");
+    EXPECT_EQ(ptr.GetValue(), 0);   
+}
+
