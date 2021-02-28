@@ -7,7 +7,7 @@ class MyClass {
     std::string name;
     int value;
 public:
-    MyClass(int value_ = 0, std::string name_ = "EMPTY")
+   explisit MyClass(int value_ = 0, std::string name_ = "EMPTY")
         : name(std::move(name_)), value(value_) {}
 
     std::string GetName() const { return name; }
@@ -32,8 +32,8 @@ TEST(class_Stack, Test1) {
 TEST(class_Stack, Test2) {
     Stack<MyClass> obj1;
     MyClass x1;
-    MyClass x2(10,"lala");
-    MyClass x3(11,"hihi");
+    MyClass x2(10, "lala");
+    MyClass x3(11, "hihi");
     obj1.push(x1);
     obj1.push(x2);
     obj1.push(x3);
@@ -48,7 +48,7 @@ TEST(class_Stack, Test2) {
     obj1.pop();
     EXPECT_EQ(obj1.Length(), 1);
     EXPECT_EQ(obj1.head().GetName(), "EMPTY");
-    EXPECT_EQ(obj1.head().GetValue(), 0); 
+    EXPECT_EQ(obj1.head().GetValue(), 0);
 }
 
 TEST(class_Stack_2, Test1) {
@@ -79,6 +79,6 @@ TEST(class_Stack_2, Test2) {
     ptr = std::move(obj2.pop());
     EXPECT_EQ(obj2.Length(), 0);
     EXPECT_EQ(ptr.GetName(), "EMPTY");
-    EXPECT_EQ(ptr.GetValue(), 0);   
+    EXPECT_EQ(ptr.GetValue(), 0);
 }
 
