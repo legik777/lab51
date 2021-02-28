@@ -1,3 +1,4 @@
+// Copyright 2020 Andreytorix
 template <typename T>
 class Stack
 {
