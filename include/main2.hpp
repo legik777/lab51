@@ -41,6 +41,9 @@ public:
             length--;
             return tmp;
         }
+        else {
+        return ();   
+        }
     }
     const T& head() const {
         T& ref = nodeHead->obj;
