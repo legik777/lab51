@@ -8,15 +8,13 @@ private:
         Node* next; //указатель на следующий элемент списка
         T obj; //хранит данные
     };
-    
-
 public:   
     Node* nodeHead;
     size_t length;
     Stack() {
         nodeHead = NULL;
         length = 0;
-    };
+    }
     void push(T&& value) { //push - передаём rvalue сслыку на объект
         Node* nd = new Node;
         nd->obj = std::move(value);
