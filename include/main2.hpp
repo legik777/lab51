@@ -42,7 +42,7 @@ public:
         }
     }
    const T& head(){
-       const T& ref = nodeHead->obj;
+       T& ref = nodeHead->obj;
         return ref;
     }
 };
