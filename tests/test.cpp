@@ -69,15 +69,15 @@ TEST(class_Stack_2, Test2) {
     MyClass x3(11, "hihi");
     obj2.push_emplace(x1, x2, x3);
     EXPECT_EQ(obj2.Length(), 3);
-    MyClass ptr = std::move(obj2.pop());
+    MyClass ptr = obj2.pop();
     EXPECT_EQ(obj2.Length(), 2);
     EXPECT_EQ(ptr.GetName(), "hihi");
     EXPECT_EQ(ptr.GetValue(), 11);
-    ptr = std::move(obj2.pop());
+    ptr = obj2.pop();
     EXPECT_EQ(obj2.Length(), 1);
     EXPECT_EQ(ptr.GetName(), "lala");
     EXPECT_EQ(ptr.GetValue(), 10);
-    ptr = std::move(obj2.pop());
+    ptr = obj2.pop();
     EXPECT_EQ(obj2.Length(), 0);
     EXPECT_EQ(ptr.GetName(), "EMPTY");
     EXPECT_EQ(ptr.GetValue(), 0);
