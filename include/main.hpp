@@ -1,4 +1,5 @@
 // Copyright 2020 Andreytorix
+#pragma once
 #include <utility>
 template <typename T>
 class Stack
