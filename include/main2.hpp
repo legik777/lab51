@@ -44,4 +44,12 @@ public:
        T& ref = nodeHead->obj;
         return ref;
     }
+    void del(Node*& head)
+    {
+        if (head)
+        {
+            del(head->nodeHead);
+            delete head;
+        }
+    }
 };
