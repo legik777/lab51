@@ -50,6 +50,7 @@ TEST(class_Stack, Test2) {
     EXPECT_EQ(obj1.Length(), 1);
     EXPECT_EQ(obj1.head().GetName(), "EMPTY");
     EXPECT_EQ(obj1.head().GetValue(), 0);
+    void del();
 }
 
 TEST(class_Stack_2, Test1) {
