@@ -47,7 +47,7 @@ public:
         return ref;
     }
     void del(Node*& head) {
-    if(head){
+    if(head) {
      del(head->nodeHead);
      delete head;
     }
