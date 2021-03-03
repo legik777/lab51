@@ -28,7 +28,6 @@ public:
             void del();
        }
     }
-    
     void push(T&& value) { //push - передаём rvalue сслыку на объект
         Node* nd = new Node;
         nd->obj = std::move(value);
