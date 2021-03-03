@@ -17,6 +17,18 @@ public:
         nodeHead = NULL;
         length = 0;
     }
+    ~Stack() {
+        void del();
+    }
+    void del() {
+        while (nodeHead) {
+            Node* tmp = nodeHead;
+            nodeHead = nodeHead->next;
+            delete tmp;
+            void del();
+       }
+    }
+    
     void push(T&& value) { //push - передаём rvalue сслыку на объект
         Node* nd = new Node;
         nd->obj = std::move(value);
@@ -45,11 +57,6 @@ public:
     const T& head() const { //возвращает ссылку на шапку стэка
         T& ref = nodeHead->obj;
         return ref;
-    }
-    void del(Node*& head) {
-    if (head) {
-     del(head->nodeHead);
-     delete head;
     }
 }
 };
