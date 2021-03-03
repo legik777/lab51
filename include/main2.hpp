@@ -17,12 +17,25 @@ public:
         nodeHead = NULL;
         length = 0;
     }
+        ~Stack() {
+        void del();
+    }
+    void del() {
+        while (nodeHead) {
+            Node* tmp = nodeHead;
+            nodeHead = nodeHead->next;
+            delete tmp;
+            void del();
+       }
+    }
     void push(T&& value) {
         Node* nd = new Node;
         nd->obj = std::move(value);
         nd->next = nodeHead;
         length++;
         nodeHead = nd;
+        nd = NULL;
+        delete nd;
     }
     template <typename ... Args> //{4,8,3,6,9,4,43,3,6,}
     void push_emplace(Args&&...  value) {
