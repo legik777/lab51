@@ -28,7 +28,7 @@ TEST(class_Stack, Test1) {
     EXPECT_EQ(obj1.head(), 2);
     obj1.pop();
     EXPECT_EQ(obj1.head(), 1);
-    void del_2();
+    void del();
 }
 
 TEST(class_Stack, Test2) {
