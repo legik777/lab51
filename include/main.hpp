@@ -34,6 +34,8 @@ public:
         nd->next = nodeHead;
         ++length;
         nodeHead = std::move(nd);
+        nd = NULL;
+        delete nd;        
     }
     void push(const T& value) { //push - передаём lvalue сслыку на объект
         Node* nd = new Node;
