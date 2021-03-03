@@ -57,6 +57,5 @@ public:
         T& ref = nodeHead->obj;
         return ref;
     }
-}
 };
 
