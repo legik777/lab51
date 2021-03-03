@@ -17,7 +17,7 @@ public:
         nodeHead = NULL;
         length = 0;
     }
-        ~Stack() {
+        ~Stack_2() {
         void del();
     }
     void del() {
