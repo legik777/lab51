@@ -24,8 +24,6 @@ public:
     obj1.push(x3);
 //
 /*
-
-
 TEST(class_Stack, Test1) {
     Stack<int> obj1;
     int x1 = 1;
@@ -35,7 +33,6 @@ TEST(class_Stack, Test1) {
     obj1.push(x2);
     obj1.push(x3);
      EXPECT_EQ(1, 1);
-   
     EXPECT_EQ(obj1.head(), 3);
     obj1.pop();
     EXPECT_EQ(obj1.head(), 2);
@@ -43,7 +40,6 @@ TEST(class_Stack, Test1) {
     EXPECT_EQ(obj1.head(), 1);
     //void del();
 }
-/*
 TEST(class_Stack, Test2) {
     Stack<MyClass> obj1;
     MyClass x1;
