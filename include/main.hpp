@@ -10,7 +10,7 @@ private:
         Node(): next(NULL){}; //указатель на следующий элемент списка
         Node(const T& value) : obj(value), next(NULL){}
         T obj; //хранит данные
-        Node* next
+        Node* next;
     };
 public:
     Node* nodeHead;
