@@ -40,7 +40,7 @@ public:
         //delete nd;
     }
     void push(const T& value) { //push - передаём lvalue сслыку на объект
-        if(Node* nd = new Node(value)){
+        if (Node* nd = new Node(value)){
         ++length;
         nodeHead = std::move(nd);
         }
