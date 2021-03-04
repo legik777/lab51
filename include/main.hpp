@@ -27,10 +27,8 @@ public:
         //T tmp = std::move(nodeHead->obj);
         nodeHead = std::move(tmp);
         length--;
-        }   
-            
-        }    
-        
+        }
+        }
         //void del();
     }
     /*void del() {
