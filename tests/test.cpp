@@ -23,7 +23,7 @@ TEST(class_Stack, Test1) {
     obj1.push(x1);
     obj1.push(x2);
     obj1.push(x3);
-     EXPECT_EQ(1,1);
+     EXPECT_EQ(1, 1);
    /*
     EXPECT_EQ(obj1.head(), 3);
     obj1.pop();
