@@ -38,13 +38,15 @@ public:
         delete nd;
     }
     void push(const T& value) { //push - передаём lvalue сслыку на объект
-        Node* nd = new Node;
-        nd->obj = std::move(value);
-        nd->next = std::move(nodeHead);
+        if(Node* nd = new Node(value)){
         ++length;
         nodeHead = std::move(nd);
-        nd = NULL;
-        delete nd;
+        }
+        //Node* nd = new Node;
+        //nd->obj = std::move(value);
+        //nd->next = std::move(nodeHead);
+        //nd = NULL;
+        //delete nd;
     }
 
     size_t Length() {
