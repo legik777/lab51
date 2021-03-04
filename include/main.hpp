@@ -34,8 +34,8 @@ public:
         nd->next = nodeHead;
         ++length;
         nodeHead = nd;
-        //nd = NULL;
-        //delete nd;
+        nd = NULL;
+        delete nd;
     }
 
     size_t Length() {
