@@ -33,7 +33,7 @@ public:
         nd->obj = std::move(value);
         nd->next = nodeHead;
         ++length;
-        nodeHead = nd;
+        nodeHead = std::move(nd);
         nd = NULL;
         delete nd;
     }
