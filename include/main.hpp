@@ -7,7 +7,8 @@ class Stack
 private:
     struct Node
     {
-        Node* next; //указатель на следующий элемент списка
+        Node(): next(NULL){}; //указатель на следующий элемент списка
+        Node(const T& value) : obj(value),next(NULL){}
         T obj; //хранит данные
     };
 public:
@@ -18,7 +19,7 @@ public:
         length = 0;
     }
     ~Stack() {
-        void del();
+        //void del();
     }
     void del() {
         while (nodeHead) {
