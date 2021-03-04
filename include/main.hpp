@@ -40,7 +40,7 @@ public:
     void push(const T& value) { //push - передаём lvalue сслыку на объект
         Node* nd = new Node;
         nd->obj = std::move(value);
-        nd->next = nodeHead;
+        nd->next = std::move(nodeHead);
         ++length;
         nodeHead = std::move(nd);
         //nd = NULL;
