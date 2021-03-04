@@ -14,7 +14,7 @@ public:
     Node* nodeHead;
     size_t length;
     Stack() {
-        nodeHead = NULL;
+        nodeHead = nullptr;
         length = 0;
     }
     ~Stack() {
@@ -25,7 +25,7 @@ public:
         nd->next = nodeHead;
         ++length;
         nodeHead = std::move(nd);
-        nd = NULL;
+        nd = nullptr;
         delete nd;
     }
     void push(const T& value) { //push - передаём lvalue сслыку на объект
@@ -34,7 +34,7 @@ public:
         nd->next = std::move(nodeHead);
         ++length;
         nodeHead = std::move(nd);
-        nd = NULL;
+        nd = nullptr;
         delete nd;
     }
 
