@@ -19,7 +19,7 @@ public:
         nodeHead = NULL;
         length = 0;
     }
-   Stack<T>::~Stack() {
+   ~Stack() {
         while (nodeHead){
         if (nodeHead){
         Node* tmp = nodeHead->next;
