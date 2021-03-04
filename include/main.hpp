@@ -7,7 +7,7 @@ class Stack
 private:
     struct Node
     {
-        Node(): next(NULL){}; //указатель на следующий элемент списка
+        Node(): next(NULL){} //указатель на следующий элемент списка
         Node(const T& value) : obj(value), next(NULL){}
         T obj; //хранит данные
         Node* next;
