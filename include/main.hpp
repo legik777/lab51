@@ -17,7 +17,7 @@ public:
         nodeHead = NULL;
         length = 0;
     }
-    ~Stack() {    
+    ~Stack() {
     }
     void push(T&& value) { //push - передаём rvalue сслыку на объект
         Node* nd = new Node;
