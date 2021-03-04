@@ -8,8 +8,9 @@ private:
     struct Node
     {
         Node(): next(NULL){}; //указатель на следующий элемент списка
-        Node(const T& value) : obj(value),next(NULL){}
+        Node(const T& value) : obj(value), next(NULL){}
         T obj; //хранит данные
+        Node* next
     };
 public:
     Node* nodeHead;
