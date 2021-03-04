@@ -14,6 +14,17 @@ public:
     std::string GetName() const { return name; }
     int GetValue() const { return value; }
 };
+//
+    Stack<int> obj1;
+    int x1 = 1;
+    int x2 = 2;
+    int x3 = 3;
+    obj1.push(x1);
+    obj1.push(x2);
+    obj1.push(x3);
+//
+/*
+
 
 TEST(class_Stack, Test1) {
     Stack<int> obj1;
