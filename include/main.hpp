@@ -55,7 +55,7 @@ public:
         Node* tmp = nodeHead->next;
         delete nodeHead;    
         //T tmp = std::move(nodeHead->obj);
-        nodeHead = std::move(tmp->next);
+        nodeHead = std::move(tmp);
         length--;
         }
     }
