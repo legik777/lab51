@@ -51,9 +51,11 @@ public:
         return length;
     }
     void pop() { //снимаем верхний элемент стэка (удаляем)
-        if (length > 0){
+        if (nodeHead){
+        Node* tmp = nodeHead->next;
+        delete nodeHead;    
         //T tmp = std::move(nodeHead->obj);
-        nodeHead = std::move(nodeHead->next);
+        nodeHead = std::move(tmp->next);
         length--;
         }
     }
