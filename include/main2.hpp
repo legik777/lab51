@@ -34,7 +34,7 @@ public:
         nd->next = nodeHead;
         length++;
         nodeHead = nd;
-        nd = NULL;
+        //nd = NULL;
         delete nd;
     }
     template <typename ... Args> //{4,8,3,6,9,4,43,3,6,}
