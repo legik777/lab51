@@ -4,32 +4,59 @@
 #include "../include/main.hpp"
 #include "../include/main2.hpp"
 
-class MyClass {
-    std::string name;
-    int value;
-public:
-   explicit MyClass(int value_ = 0, std::string name_ = "EMPTY")
-        : name(std::move(name_)), value(value_) {}
 
-    std::string GetName() const { return name; }
-    int GetValue() const { return value; }
-};
 //
 //
 
 TEST(class_Stack, Test1) {
-    Stack<int> obj1;
-    int x1 = 1;
-    int x2 = 2;
-    int x3 = 3;
-    obj1.push(x1);
-    obj1.push(x2);
-    obj1.push(x3);
+   StackList<int> SL;
+  SL.Print("SL");
+
+  SL.Push(8);
+  SL.Push(5);
+  SL.Push(10);
+  SL.Push(7);
+  SL.Print("SL");
+
+  // проверка конструктора копирования
+  StackList<int> SL2 = SL;
+  SL2.Print("SL2");
+
+  SL.Empty();
+  SL.Print("SL");
+
+  SL = SL2;
+  SL.Print("SL = SL2");
+
+  StackList<int> SL3;
+  SL3.Push(1);
+  SL3.Push(2);
+  SL3.Push(3);
+  SL3.Print("SL3");
+
+  SL = SL2 = SL3;
+  SL.Print("SL");
+  SL2.Print("SL2");
+
+  int d = SL2.Pop();
+
+  cout << "d = " << d << endl;
+  SL2.Print("SL2-1");
+
+  d = SL2.Pop();
+  SL2.Print("SL2-2");
+
+  d = SL2.Pop();
+  SL2.Print("SL2-3");
+
+  d = SL2.Pop();
+  cout << "d = " << d << endl;
+  SL2.Print("SL2----");
      EXPECT_EQ(1, 1);
     //EXPECT_EQ(obj1.head(), 3);
-    obj1.pop();
+   
     //EXPECT_EQ(obj1.head(), 2);
-    obj1.pop();
+    
     //EXPECT_EQ(obj1.head(), 1);
     //void del();
 }
