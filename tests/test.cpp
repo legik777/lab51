@@ -1,7 +1,7 @@
 // Copyright 2020 Andreytorix
 #include <gtest/gtest.h>
 #include <utility>
-#include "../include/main.hpp"
+//#include "../include/main.hpp"
 #include "../include/main2.hpp"
 
 
