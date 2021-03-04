@@ -19,7 +19,18 @@ public:
         nodeHead = NULL;
         length = 0;
     }
-    ~Stack() {
+   Stack<T>::~Stack() {
+        while (nodeHead){
+        if (nodeHead){
+        Node* tmp = nodeHead->next;
+        delete nodeHead;
+        //T tmp = std::move(nodeHead->obj);
+        nodeHead = std::move(tmp);
+        length--;
+        }   
+            
+        }    
+        
         //void del();
     }
     /*void del() {
