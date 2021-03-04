@@ -44,7 +44,7 @@ public:
         ++length;
         nodeHead = std::move(nd);
         //nd = NULL;
-        //delete nd;
+        delete nd;
     }
 
     size_t Length() {
